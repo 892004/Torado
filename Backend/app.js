@@ -5,6 +5,7 @@ const userRoutes = require('./Routes/userRoutes')
 const categoryRoutes = require('./Routes/categoryRoutes')
 const productRoutes = require('./Routes/productRoutes')
 const productImgRoutes = require('./Routes/ProductImgRoutes')
+const wishlistRoutes = require('./Routes/WishlistRoutes')
 
 const app = express();
 
@@ -22,6 +23,9 @@ app.use("/api/product" , productRoutes)
 
 // product-img
 app.use("/api/product-img",productImgRoutes)
+
+// wishlist
+app.use("/api/wishlist" , wishlistRoutes)
 
 
 module.exports = app;
