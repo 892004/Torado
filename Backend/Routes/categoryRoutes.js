@@ -9,4 +9,4 @@ router.get("/" , getCategories)
 router.get("/:id" , getCategoryById)
 router.put("/:id" ,verifyToken , isAdmin , updateCategory)
 router.delete("/:id",verifyToken , isAdmin , DeleteCategory)
-module.exports = router
+module.exports = router 
