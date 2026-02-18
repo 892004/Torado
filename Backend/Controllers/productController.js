@@ -27,7 +27,7 @@ exports.getProductById = async(req , res ) =>{
     try{
         const{id} = req.params;
 
-        const[result]=await db.query("CALL sp_get_product_by_id(?)",[id])
+        const[result] = await db.query("CALL sp_get_product_by_id(?)",[id])
         const product = result[0][0]
 
         if(!product){

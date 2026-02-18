@@ -6,6 +6,9 @@ const categoryRoutes = require('./Routes/categoryRoutes')
 const productRoutes = require('./Routes/productRoutes')
 const productImgRoutes = require('./Routes/ProductImgRoutes')
 const wishlistRoutes = require('./Routes/WishlistRoutes')
+const CartRoutes = require('./Routes/CartRoutes')
+const OrderRoutes = require('./Routes/OrderRoutes')
+
 
 const app = express();
 
@@ -27,5 +30,10 @@ app.use("/api/product-img",productImgRoutes)
 // wishlist
 app.use("/api/wishlist" , wishlistRoutes)
 
+// Cart
+app.use("/api/cart" , CartRoutes)
+
+// oreders
+app.use("/api/order" , OrderRoutes)
 
 module.exports = app;
