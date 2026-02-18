@@ -19,3 +19,19 @@ exports.getDashboard = async (req, res) => {
         });
     }
 };
+
+
+exports.getRecentOrders = async (req, res) => {
+    try {
+
+        const [result] = await db.query("CALL sp_admin_recent_orders()");
+
+        res.json(result[0]);
+
+    } catch (error) {
+        res.status(500).json({
+            message: "Recent Orders Error",
+            error: error.message
+        });
+    }
+};
