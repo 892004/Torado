@@ -99,12 +99,13 @@ foreign key (product_id) references products(product_id)
 insert into users (name , email , password , phone , role) values
 ('KaushalVora'  , 'vorakaushal123@gmail.com' , '123456789' , '9173739731' , 'admin');
 select*from users;
-
 -- add on Categories table --
 insert into categories(category_name , image ) values
 ('Ring' , 'ring.jpg'); 
 select*from categories;
  
+delete from categories where category_id = 3;
+ delete from users where user_id = 3;
 delete from categories where category_id = 2;  -- delete query ;
 
 -- add on products table --
@@ -147,9 +148,11 @@ IN p_email varchar(255),
 IN p_password varchar(255)
 )
 BEGIN
-select*from users where email = p_email and password = p_password and status = 1;
+select*from users where email = p_email and status = 1;
 END $$
 DELIMITER ;
+
+
 
 -- 3.sp_get_user_by_id --
 DELIMITER $$
@@ -161,8 +164,20 @@ select*from users where user_id = p_user_id;
 END $$
 DELIMITER ;
 
+-- 4. sp_get_users  --
+DELIMITER $$
 
--- -- -- category procedure -- -- --
+CREATE PROCEDURE sp_get_users()
+BEGIN
+    SELECT user_id, name, email, phone, role, status, created_at
+    FROM users
+    ORDER BY user_id DESC;
+END $$
+
+DELIMITER ; 
+
+
+category procedure -- -- --
 
 -- 1. sp_add_category --
 DELIMITER $$
@@ -326,14 +341,18 @@ DELIMITER ;
 
 -- 1. sp_add_product_image -- 
  DELIMITER $$
- create procedure sp_add_product_image(
+ create procedure sp_add_product_img(
  IN p_product_id int ,
  IN p_image_url varchar(255)
  )
  BEGIN 
- insert into product_image (product_id , image_url) values (p_product_id , p_image_url);
+ insert into product_img(product_id , image_url) values (p_product_id , p_image_url);
  END $$
  DELIMITER ;
+ 
+
+ 
+
 
 
 -- 2.sp_get_product_image --
@@ -422,7 +441,7 @@ DELIMITER ;
 -- 2.sp_get_cart_by_user --
 DELIMITER $$
 create procedure sp_get_cart_by_user(
-IN p_uset_id int
+IN p_user_id int
 ) 
 BEGIN	
    SELECT c.*, p.product_name, p.thumbnail
@@ -554,3 +573,67 @@ BEGIN
 END $$sp_clear_cart
 DELIMITER ;
 
+-- admin dashboard --
+DELIMITER $$
+
+CREATE PROCEDURE sp_admin_dashboard()
+BEGIN
+
+SELECT COUNT(*) AS totalUsers FROM users;
+
+SELECT COUNT(*) AS totalProducts FROM products;
+
+SELECT COUNT(*) AS totalOrders FROM orders;
+
+SELECT IFNULL(SUM(total_amount),0) AS totalRevenue FROM orders;
+
+END $$
+
+DELIMITER ;
+
+
+
+-- recent order -- 
+DELIMITER $$
+
+CREATE PROCEDURE sp_admin_recent_orders()
+BEGIN
+
+SELECT 
+    o.order_id,
+    o.total_amount,
+    o.order_status,
+    o.created_at,
+    u.name AS user_name
+FROM orders o
+JOIN users u ON o.user_id = u.user_id
+ORDER BY o.order_id DESC
+LIMIT 5;
+
+END $$
+
+DELIMITER ;
+ 
+  
+
+
+
+ALTER TABLE product_img
+DROP FOREIGN KEY product_img_ibfk_1;
+
+ALTER TABLE product_img
+ADD CONSTRAINT product_img_ibfk_1
+FOREIGN KEY (product_id)
+REFERENCES products(product_id)
+ON DELETE CASCADE;
+
+
+
+select*from users;
+select*from categories;
+select*from products;
+select*from product_img;
+select*from wishlish;
+select*from orders;
+select*from order_items;
+select*from cart;
