@@ -2,7 +2,9 @@ const db =  require('../Config/db')
 
 exports.AddProductImg =  async(req , res ) =>{
     try{
-        const {product_id , image_url} = req.body 
+        const {product_id} = req.body ;
+        const image_url = req.file ? req.file.filename : null;
+
 
         await db.query("CALL sp_add_product_img(?,?)",[product_id , image_url]);
 

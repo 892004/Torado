@@ -2,7 +2,10 @@ const db = require("../Config/db")
 
 exports.AddCategory = async (req , res ) =>{
     try{
-        const {category_name , image } = req.body
+        const {category_name} = req.body
+
+         const image = req.file ? req.file.filename : null;
+
         await db.query("CALL sp_add_category (? , ?)" , [category_name , image]);
 
         res.json({message:"Category Added"})
@@ -43,7 +46,9 @@ exports.getCategoryById = async(req , res )=>{
 exports.updateCategory = async(req , res ) =>{
     try{
         const {id} = req.params;
-        const {category_name , image} = req.body
+        const {category_name} = req.body
+
+         const image = req.file ? req.file.filename : null;
 
         await db.query("CALL sp_update_category(?,?,?)",[id , category_name , image]);
         res.json({message:"Category updated succesfully.."})

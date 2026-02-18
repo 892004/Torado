@@ -2,7 +2,9 @@ const db = require('../Config/db')
 
 exports.AddProduct = async(req , res) =>{
     try{
-        const{category_id,product_name, description,price,discount_price,stock,thumbnail} = req.body
+        const{category_id,product_name, description,price,discount_price,stock , thumbnail} = req.body
+
+         const image = req.file ? req.file.filename : null;
 
         await db.query("CALL sp_add_products(?,?,?,?,?,?,?)",[category_id , product_name , description , price , discount_price , stock , thumbnail]);
 
@@ -43,7 +45,9 @@ exports.getProductById = async(req , res ) =>{
 exports.updateProducts = async (req , res)=>{
     try{
         const {id} =  req.params;
-        const{category_id , product_name, description , price , discount_price , stock , thumbnail} = req.body
+        const{category_id , product_name, description , price , discount_price , stock ,thumbnail } = req.body
+
+         const image = req.file ? req.file.filename : null;
 
         await db.query("CALL sp_update_product(?,?,?,?,?,?,?,?)",[id,category_id , product_name,description, price, discount_price,stock,thumbnail]);
 

@@ -18,6 +18,11 @@ exports.verifyToken = (req ,res ,next)=>{
 }
 
 exports.isAdmin = (req , res , next ) =>{
+
+    if(!req.user){
+        return res.status(401).json({Message:"Unauthorized"})
+    }
+    
     if(req.user.role !== "admin"){
         return res.status(403).json({Message:"Admin Can access only"})
     }
