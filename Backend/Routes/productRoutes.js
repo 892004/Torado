@@ -5,10 +5,10 @@ const upload = require("../Middleware/Multer")
 const router = express.Router()
 
 
-router.post('/add' , verifyToken , upload.single("image"), isAdmin ,AddProduct)
+router.post('/add' , verifyToken , upload.single("thumbnail"), isAdmin ,AddProduct)
 router.get("/search" , SearchProducts)
 router.get('/',getProducts)
 router.get('/:id',getProductById)
-router.put('/:id',verifyToken ,upload.single("image"), isAdmin, updateProducts)
+router.put('/:id',verifyToken ,upload.single("thumbnail"), isAdmin, updateProducts)
 router.delete('/:id' , verifyToken , isAdmin , DeleteProduct)
 module.exports = router
