@@ -1,0 +1,106 @@
+.users{
+    padding:10px 20px;
+}
+
+.usersHeader{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.addUserBtn{
+    background:#7bc17b;
+    color:#fff;
+    border:none;
+    padding:10px 16px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.tableWrapper{
+    margin-top:20px;
+    background:#fff;
+    border-radius:14px;
+    padding:20px;
+}
+
+.usersTable{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.usersTable th{
+    text-align:left;
+    padding:14px;
+    font-weight:600;
+    border-bottom:2px solid #eee;
+}
+
+.usersTable td{
+    padding:16px 14px;
+    border-bottom:1px solid #f1f1f1;
+}
+
+.usersTable tr:hover{
+    background:#f9f9f9;
+}
+
+/* user avatar */
+.userInfo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.avatar{
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    background:#d9d9d9;
+}
+
+/* role badge */
+.role{
+    padding:4px 10px;
+    border-radius:20px;
+    font-size:12px;
+}
+
+.role.admin{
+    background:#e6f4ea;
+}
+
+.role.user{
+    background:#f2f2f2;
+}
+
+/* status badge */
+.status{
+    padding:4px 10px;
+    border-radius:20px;
+    font-size:12px;
+}
+
+.status.active{
+    background:#dff5df;
+}
+
+/* buttons */
+.editBtn{
+    padding:6px 12px;
+    margin-right:8px;
+    border:none;
+    background:#7bc17b;
+    color:#fff;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.deleteBtn{
+    padding:6px 12px;
+    border:none;
+    background:#ff5c5c;
+    color:#fff;
+    border-radius:6px;
+    cursor:pointer;
+}

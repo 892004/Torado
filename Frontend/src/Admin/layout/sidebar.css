@@ -1,0 +1,22 @@
+.Sidebar ul li{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Sidebar ul li::before{
+    position: absolute;
+    content: '';
+    height: 2px;
+    width: 0%;
+    border-radius: 2px;
+    background-color: black;
+    bottom: -2px;
+    left: 0;
+    transition: 0.5s;
+}
+
+.Sidebar ul li:hover::before{
+    width: 100%;
+}
