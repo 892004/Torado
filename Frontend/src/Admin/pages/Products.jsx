@@ -1,32 +1,48 @@
-import React, { useEffect, useState } from 'react'
-import '../../Components/Products/product.css'
-import axios from '../../utils/axiosInstance'
-import AddProductModal from '../Components/AddProductModel'
+import React, { useEffect, useState } from "react";
+import "../../Components/Products/product.css";
+import axios from "../../utils/axiosInstance";
+import AddProductModal from "../Components/AddProductModel";
+import EditProductModal from "../Components/EditProductModel";
 
 const Products = () => {
+  const [products, setproducts] = useState([]);
+  const [openModal, setOpenModal] = useState(false);
 
-const [products, setproducts] = useState([])
-const [openModal, setOpenModal] = useState(false);
+  // ✅ edit states
+  const [editModal, setEditModal] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
-const getProducts = async () =>{
-  try{
-    const res =  await axios.get("/product")
-    setproducts(res.data);
-    console.log(res.data);
-  }catch(err){
-    console.log(err);
-  }
-}
+  // ================= GET PRODUCTS =================
+  const getProducts = async () => {
+    try {
+      const res = await axios.get("/product");
+      setproducts(res.data);
+      console.log(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
-useEffect(()=>{
-  getProducts()
-},[])
+  useEffect(() => {
+    getProducts();
+  }, []);
+
+  // ================= DELETE PRODUCT =================
+  const handleDelete = async (id) => {
+    try {
+      if (!window.confirm("Delete this product?")) return;
+
+      await axios.delete(`/product/${id}`);
+      getProducts(); // refresh table
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <section className="Products">
-
       <div className="productsHeader">
-        <h2 className='text-4xl font-medium'>Products</h2>
+        <h2 className="text-4xl font-medium">Products</h2>
 
         <button
           className="addProductBtn"
@@ -34,9 +50,9 @@ useEffect(()=>{
         >
           + Add Product
         </button>
-
       </div>
 
+      {/* ================= TABLE ================= */}
       <div className="tableWrapper">
         <table className="productsTable">
           <thead>
@@ -56,6 +72,7 @@ useEffect(()=>{
               <tr key={product.product_id}>
                 <td>{product.product_id}</td>
 
+                {/* PRODUCT INFO */}
                 <td className="productInfo">
                   <div className="productImg">
                     <img
@@ -78,25 +95,47 @@ useEffect(()=>{
                 </td>
 
                 <td>
-                  <button className="editBtn">Edit</button>
-                  <button className="deleteBtn">Delete</button>
+                  {/* ===== EDIT ===== */}
+                  <button
+                    className="editBtn"
+                    onClick={() => {
+                      setSelectedProduct(product);
+                      setEditModal(true);
+                    }}
+                  >
+                    Edit
+                  </button>
+
+                  {/* ===== DELETE ===== */}
+                  <button
+                    className="deleteBtn"
+                    onClick={() => handleDelete(product.product_id)}
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}
           </tbody>
-
         </table>
       </div>
 
-      {/* ✅ MODAL ALWAYS HERE */}
+      {/* ================= ADD MODAL ================= */}
       <AddProductModal
         isOpen={openModal}
         onClose={() => setOpenModal(false)}
         refreshProducts={getProducts}
       />
 
+      {/* ================= EDIT MODAL ================= */}
+      <EditProductModal
+        isOpen={editModal}
+        onClose={() => setEditModal(false)}
+        product={selectedProduct}
+        refreshProducts={getProducts}
+      />
     </section>
-  )
-}
+  );
+};
 
-export default Products
+export default Products;

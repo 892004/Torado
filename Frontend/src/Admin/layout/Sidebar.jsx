@@ -1,5 +1,5 @@
 import React from 'react'
-import Logo from '../../assets/Logo/logo.svg'
+import Logo from '../../assets/Images/Logo/logo.svg'
 import { RxDashboard } from "react-icons/rx";
 import { PiUsersFourLight } from "react-icons/pi";
 import { GoPackage } from "react-icons/go";
@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
   return (
-    <section className="Sidebar p-8 flex flex-col  items-center justify-center">
+    <section className="Sidebar fixed top-0 left-0 p-8 flex flex-col  items-center justify-center">
       <img src={Logo} alt="Logo" className='h-12'/>
       <ul className='p-10 text-[18px] flex flex-col items-start gap-6'>
         <Link to='dashboard' className='flex items-center justify-center  gap-4 cursor-pointer'><span><RxDashboard className='text-2xl '/></span>Dashboard </Link>

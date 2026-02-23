@@ -8,8 +8,9 @@ exports.getDashboard = async (req, res) => {
         res.json({
             totalUsers: result[0][0].totalUsers,
             totalProducts: result[1][0].totalProducts,
-            totalOrders: result[2][0].totalOrders,
-            totalRevenue: result[3][0].totalRevenue
+            totalCategories: result[2][0].totalCategories,
+            totalOrders: result[3][0].totalOrders,
+            totalRevenue: result[4][0].totalRevenue
         });
 
     } catch (error) {

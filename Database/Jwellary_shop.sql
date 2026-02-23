@@ -98,12 +98,28 @@ foreign key (product_id) references products(product_id)
 -- add on users table --  
 insert into users (name , email , password , phone , role) values
 ('KaushalVora'  , 'vorakaushal123@gmail.com' , '123456789' , '9173739731' , 'admin');
+
+insert into users (name , email , password , phone ) values
+('KrushalShah'  , 'shahkrushal2003@gmail.com' , '147258369' , '7435028062');
+
+insert into users (name , email , password , phone,role ) values
+('kaushal','vorakaushal2004@gmail.com','Kaush@004','7984605887', 'admin');
+
 select*from users;
+UPDATE users
+SET password = '$2b$10$WvA0jtz/T1honNz94Z2mhuV4bP4MeQOOD2huLNKWfrzyR0OSUZZnK'
+WHERE email = 'vorakaushal2004@gmail.com';
+
+
+
+
+
 -- add on Categories table --
 insert into categories(category_name , image ) values
 ('Ring' , 'ring.jpg'); 
 select*from categories;
- 
+delete from categories  where category_id = 1;
+
 delete from categories where category_id = 3;
  delete from users where user_id = 3;
 delete from categories where category_id = 2;  -- delete query ;
@@ -112,6 +128,7 @@ delete from categories where category_id = 2;  -- delete query ;
 insert into products(category_id , product_name , description ,  price , discount_price , stock , thumbnail) values
 (1 , 'Rose Gold Ring' ,  'This is most selled item'  , 2000 , 1800,10,'Rose gold.jpg');
 select*from products;
+delete from products where product_id = 2;
 
 
 -- add on product_img table --
@@ -583,6 +600,8 @@ SELECT COUNT(*) AS totalUsers FROM users;
 
 SELECT COUNT(*) AS totalProducts FROM products;
 
+SELECT COUNT(*) AS totalCategories FROM categories; 
+
 SELECT COUNT(*) AS totalOrders FROM orders;
 
 SELECT IFNULL(SUM(total_amount),0) AS totalRevenue FROM orders;
@@ -590,6 +609,9 @@ SELECT IFNULL(SUM(total_amount),0) AS totalRevenue FROM orders;
 END $$
 
 DELIMITER ;
+
+use Torado;
+drop procedure sp_admin_dashboard; 
 
 
 
@@ -614,7 +636,6 @@ END $$
 
 DELIMITER ;
  
-  
 
 
 
