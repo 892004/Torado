@@ -194,7 +194,45 @@ END $$
 DELIMITER ; 
 
 
-category procedure -- -- --
+-- 4. sp_get_users  --
+DELIMITER $$
+CREATE PROCEDURE sp_toggle_user_status(
+    IN p_user_id INT,
+    IN p_status INT
+)
+BEGIN
+    UPDATE users
+    SET status = p_status
+    WHERE user_id = p_user_id;
+END $$
+DELIMITER ;
+
+
+-- 5. update user
+DELIMITER $$
+
+CREATE PROCEDURE sp_update_user(
+    IN p_user_id INT,
+    IN p_name VARCHAR(255),
+    IN p_email VARCHAR(255),
+    IN p_phone VARCHAR(20),
+    IN p_role VARCHAR(50)
+)
+BEGIN
+    UPDATE users
+    SET
+        name = p_name,
+        email = p_email,
+        phone = p_phone,
+        role = p_role
+    WHERE user_id = p_user_id;
+END $$
+DELIMITER ;
+
+use Torado;
+
+
+-- category procedure -- -- --
 
 -- 1. sp_add_category --
 DELIMITER $$
@@ -654,7 +692,7 @@ select*from users;
 select*from categories;
 select*from products;
 select*from product_img;
-select*from wishlish;
+select*from wishlist;
 select*from orders;
 select*from order_items;
 select*from cart;
