@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import '../../Components/Category/category.css';
+import '../Components/Category/category.css';
 import axios from '../../utils/axiosInstance'
 import AddCategoryModal from '../Components/AddcategoryModel';
 import EditCategoryModal from '../Components/EditCategoryModel';

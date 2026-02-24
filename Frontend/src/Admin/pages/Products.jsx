@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../../Components/Products/product.css";
+import "../Components/Products/product.css";
 import axios from "../../utils/axiosInstance";
 import AddProductModal from "../Components/AddProductModel";
 import EditProductModal from "../Components/EditProductModel";

@@ -1,0 +1,18 @@
+.Cards button::after{
+    position: absolute;
+    display: block;
+    content: '';
+    bottom: 0;
+    height: 0.2px;
+    width: 0%;
+    background-color: black;
+}
+.Cards button:hover::after{
+    width: 100%;
+    transition: 0.5s;
+}
+
+.Cards img:hover{
+    transform: scale(110%);
+    transition: 0.5s;
+}

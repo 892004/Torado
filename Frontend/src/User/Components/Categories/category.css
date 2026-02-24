@@ -1,0 +1,42 @@
+.Category button::after{
+    position: absolute;
+    display: block;
+    content: '';
+    height: 0.2px;
+    width: 0%;
+    background-color: black;
+    bottom: 0;
+}
+.Category button:hover::after{
+    width: 100%;
+    transition: 0.5s;
+}
+
+.Right .category-box li{
+      font-family: "Prata", serif;
+      font-size: 26px;
+      display: flex;
+      align-items: start;
+      justify-content: start;
+      gap: 10px;
+      position: relative;
+      cursor: pointer;
+}
+
+
+.Right .category-box li::after{
+    position: absolute;
+    display: block;
+    content: '';
+    height: 0.5px;
+    width: 600px;
+    background-color: black;
+    bottom: 0;
+    opacity:0.19;
+}
+
+.Right .category-box span{
+    font-family: "Outfit", sans-serif;
+    font-size: 15px;
+    color: #CB927A;
+}

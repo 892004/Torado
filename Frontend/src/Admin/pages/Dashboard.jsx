@@ -1,5 +1,5 @@
 import React, { useEffect , useState} from 'react'
-import AdminCards from '../../Components/AdminCards/AdminCards'
+import AdminCards from '../Components/AdminCards/AdminCards'
 import axios from '../../utils/axiosInstance'
 import { useNavigate } from 'react-router-dom'
 
