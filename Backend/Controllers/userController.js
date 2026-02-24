@@ -80,3 +80,47 @@ exports.getUsers = async(req , res ) =>{
         res.status(500).json({message:"Server Error" , error:error.message})
     }
 }
+
+exports.toggleUserStatus = async (req, res) => {
+    try {
+
+        const { id } = req.params;
+        const { status } = req.body; // 1 or 0
+
+        await db.query(
+            "CALL sp_toggle_user_status(?,?)",
+            [id, status]
+        );
+
+        res.json({ message: "User status updated" });
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            message: "Toggle Status Error",
+            error: error.message
+        });
+    }
+};
+
+exports.updateUser = async (req, res) => {
+    try {
+
+        const { id } = req.params;
+        const { name, email, phone, role } = req.body;
+
+        await db.query(
+            "CALL sp_update_user(?,?,?,?,?)",
+            [id, name, email, phone, role]
+        );
+
+        res.json({ message: "User updated successfully" });
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            message: "Update User Error",
+            error: error.message
+        });
+    }
+};
