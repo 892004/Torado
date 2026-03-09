@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState , useRef } from "react";
 import ProductHeader from "./ProductHeader";
 import axios from "axios";
 import Ratings from "./Ratings";
@@ -7,10 +7,32 @@ import { FaRegHeart } from "react-icons/fa6";
 import { LuEye } from "react-icons/lu";
 import { TfiExchangeVertical } from "react-icons/tfi";
 import { FiShoppingCart } from "react-icons/fi";
+import { GoArrowLeft } from "react-icons/go";
+import { GoArrowRight } from "react-icons/go";
+
 
 const AllProducts = () => {
   const [layout, setlayout] = useState(3);
   const [products, setproducts] = useState([]);
+  const [fade, setFade] = useState(true);
+
+  // pagination
+  const [currentPage, setcurrentPage] = useState(1);
+  const productsRef = useRef(null);
+  const ProductsPerPage =
+  layout === 1
+    ? 8
+    : layout === 2
+    ? 12
+    : layout === 3
+    ? 12
+    : layout === 4
+    ? 16
+    : 20;
+
+    useEffect(() => {
+  setcurrentPage(1);
+}, [layout]);
 
   useEffect(() => {
     axios
@@ -24,16 +46,46 @@ const AllProducts = () => {
       });
   }, []);
 
+  const indexOfLastProduct = currentPage * ProductsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - ProductsPerPage;
+
+  const currentProduct = products.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct
+  );
+
+  const totalPages = Math.ceil(products.length / ProductsPerPage);
+
+useEffect(() => {
+
+  setFade(false);
+
+  const timer = setTimeout(() => {
+    setFade(true);
+  }, 200);
+
+  productsRef.current?.scrollIntoView({
+    behavior: "smooth",
+    block: "start",
+  });
+
+  return () => clearTimeout(timer);
+
+}, [currentPage]);
+
   return (
-    <section className="Allproducts w-full min-h-screen flex flex-col items-center py-20">
+    <section
+  ref={productsRef}
+  className="Allproducts w-full min-h-screen flex flex-col items-center py-20"
+>
       <ProductHeader layout={layout} setlayout={setlayout} />
 
       {/* LIST VIEW */}
 
       {/* Lauout 1  */}
       {layout === 1 ? (
-        <div className="flex flex-col gap-10 w-7xl mt-10">
-          {products.map((item) => (
+      <div className={`flex flex-col gap-10 w-7xl mt-10 transition-all duration-500 ${fade ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+          {currentProduct.map((item) => (
             <div
               key={item.product_id}
               className="flex gap-10 border-b border-gray-300 pb-10"
@@ -87,31 +139,31 @@ const AllProducts = () => {
         /* GRID VIEW */
 
         <div
-          className={`grid ${
+          className={`grid transition-all duration-500 ${fade ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"} ${
             layout === 2
               ? "grid-cols-2"
               : layout === 3
-                ? "grid-cols-3"
-                : layout === 4
-                  ? "grid-cols-4"
-                  : "grid-cols-5"
+              ? "grid-cols-3"
+              : layout === 4
+              ? "grid-cols-4"
+              : "grid-cols-5"
           } gap-10 w-7xl mt-10`}
         >
-          {products.map((item) => (
+          {currentProduct.map((item) => (
             <div key={item.product_id} className="group">
               <div className="relative bg-gray-100 overflow-hidden">
-              <img
-  src={`http://localhost:5000/uploads/${item.thumbnail}`}
-  className={`w-full object-cover transition-transform duration-800 ease-in-out scale-80 group-hover:scale-85 ${
-    layout === 2
-      ? "h-[450px]"
-      : layout === 3
-      ? "h-[350px]"
-      : layout === 4
-      ? "h-[280px]"
-      : "h-[220px]"
-  }`}
-/>
+                <img
+                  src={`http://localhost:5000/uploads/${item.thumbnail}`}
+                  className={`w-full object-cover transition-transform bg-transparent duration-800 ease-in-out scale-80 group-hover:scale-85 ${
+                    layout === 2
+                      ? "h-[450px]"
+                      : layout === 3
+                      ? "h-[350px]"
+                      : layout === 4
+                      ? "h-[280px]"
+                      : "h-[220px]"
+                  }`}
+                />
 
                 {/* Hover Icons */}
 
@@ -150,10 +202,10 @@ transition-all duration-500 delay-300"
                     layout === 2
                       ? "text-lg"
                       : layout === 3
-                        ? "text-lg"
-                        : layout === 4
-                          ? "text-lg"
-                          : "text-lg"
+                      ? "text-lg"
+                      : layout === 4
+                      ? "text-lg"
+                      : "text-lg"
                   }`}
                 />
                 <h3 className="text-lg">{item.product_name}</h3>
@@ -162,16 +214,58 @@ transition-all duration-500 delay-300"
                   <span className="text-[#CB927A] ">
                     ₹{item.discount_price}
                   </span>
-
-                  {/* <span className="line-through text-gray-400">
-                    ₹{item.price}
-                  </span> */}
                 </div>
               </div>
             </div>
           ))}
         </div>
       )}
+
+      {/* PAGINATION */}
+
+     <div className="flex justify-center items-center gap-3 mt-14">
+
+  {/* Prev Button */}
+
+  <button
+    onClick={() => setcurrentPage((prev) => Math.max(prev - 1, 1))}
+    disabled={currentPage === 1}
+    className="px-3 cursor-pointer py-3 border border-gray-400 rounded-full hover:bg-[#CD9780] hover:text-white transition-colors duration-500   bg-white disabled:opacity-40"
+  >
+    <GoArrowLeft /> 
+  </button>
+
+  {/* Page Numbers */}
+
+  {Array.from({ length: totalPages }).map((_, index) => (
+    <button
+      key={index}
+      onClick={() => setcurrentPage(index + 1)}
+      className={`px-4 py-2 border cursor-pointer border-gray-300 rounded-full transition-colors duration-500 ${
+        currentPage === index + 1
+          ? "bg-[#CD9780] text-white"
+          : "bg-white  hover:bg-[#CD9780] hover:text-white "
+      }`}
+    >
+      {index + 1}
+    </button>
+  ))}
+
+  {/* Next Button */}
+
+  <button
+    onClick={() =>
+      setcurrentPage((prev) =>
+        Math.min(prev + 1, totalPages)
+      )
+    }
+    disabled={currentPage === totalPages}
+    className="px-3 py-3 border cursor-pointer border-gray-400 hover:bg-[#CD9780] hover:text-white transition-colors duration-500 rounded-full  bg-white disabled:opacity-80"
+  >
+    <GoArrowRight />
+  </button>
+
+</div>
     </section>
   );
 };
