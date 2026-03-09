@@ -7,8 +7,7 @@ import Bracelate from "../../../assets/Images/categories/bracelets.png";
 import Bundleset from "../../../assets/Images/categories/bundle-set.png";
 import Locket from "../../../assets/Images/categories/locket.png";
 
-const RightSection = () => {
-  const categories = [
+export const categories = [
     { name: "Necklaces", count: "08 Products", img: Neckles },
     { name: "Earrings", count: "35 Products", img: Earrings },
     { name: "Rings", count: "27 Products", img: Rings },
@@ -16,6 +15,9 @@ const RightSection = () => {
     { name: "Bundle Set", count: "18 Products", img: Bundleset },
     { name: "Locket", count: "07 Products", img: Locket },
   ];
+
+const RightSection = () => {
+  
 
   return (
     <section className="Right h-auto flex-1 flex flex-col items-center relative">
@@ -36,8 +38,8 @@ const RightSection = () => {
     absolute right-0 top-1/2 -translate-y-1/2
     w-32 h-32 object-contain
     opacity-0
-    translate-x-[40px]        /* 👈 default position */
-    group-hover:translate-x-0 /* 👈 hover par slide */
+    translate-x-[40px]       
+    group-hover:translate-x-0 
     group-hover:opacity-100
     transition-all duration-500
   "

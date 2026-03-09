@@ -10,6 +10,7 @@ import AdminLogin from "./Admin/pages/AdminLogin";
 import ProtectedRoutes from "./Admin/layout/ProtectedRoutes";
 import UserLayout from "./User/Layout/UserLayout";
 import HomePage from "./User/Pages/HomePage";
+import Categories from './User/Pages/Categories'
 
 const App = () => {
   return (
@@ -19,7 +20,9 @@ const App = () => {
 
       <Route path="/" element={<UserLayout />} >
           <Route index element = {<HomePage /> } />
+          <Route path="Categories" element ={<Categories />} />
       </Route>
+
       {/* Admin Login */}
       <Route path="/admin/login" element={<AdminLogin />} />
 

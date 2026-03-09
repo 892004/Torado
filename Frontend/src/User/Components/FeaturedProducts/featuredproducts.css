@@ -1,0 +1,33 @@
+.feature-card img:hover{
+    transform: scale(110%);
+    transition: 0.5s;
+}
+
+.navigate-button button:hover{
+ background-color:#CC9078;   
+ color: white;
+ transition: 0.5s;
+}
+.new-ribbon{
+  position:absolute;
+  top:0;
+  left:0;
+  width:0;
+  height:0;
+  border-top:70px solid #CC9078;
+  border-right:70px solid transparent;
+  z-index:20;
+}
+
+.new-ribbon span{
+  position:absolute;
+  top:-58px;
+  left:-20px;
+  transform:rotate(-45deg);
+  color:white;
+  font-size:14px;
+  font-weight:500;
+  width:80px;
+  text-align:center;
+  pointer-events:none;
+}

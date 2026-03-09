@@ -57,7 +57,7 @@ const NewCollection = () => {
 
       <Swiper
         slidesPerView={3}
-        speed={1000}
+        speed={2000}
         loop={true}
         onSwiper={setSwiperRef}   
         modules={[Navigation]}

@@ -1,0 +1,31 @@
+/* Image Hover Zoom */
+.Explore-cards img:hover{
+    transform: scale(1.1);
+    transition: 0.5s ease;
+}
+
+/* IMPORTANT — button ko relative banana jaruri */
+.right-collection .content button{
+    position: relative;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+/* underline initial state */
+.right-collection .content button::after{
+    position: absolute;
+    content: '';
+    left: 0;
+    bottom: 0px;
+    height: 1px;              /* 0.2px hata diya */
+    width: 0%;
+    background-color: black;
+    transition: all 0.5s ease-out;
+}
+
+/* PARENT HOVER → CHILD ANIMATION */
+.right-collection .content:hover button::after{
+    width: 100%;
+    transform: translateY(4px);
+}

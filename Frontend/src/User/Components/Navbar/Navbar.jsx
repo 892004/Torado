@@ -111,8 +111,8 @@ const Navbar = () => {
           {/* MENU */}
           <div className="hidden md:flex gap-8 text-[16px]">
             <Link to="/">Home</Link>
-            <Link to="/shop">Shop</Link>
-            <Link to="/category">Category</Link>
+            <Link to="/shop">Shop </Link>
+            <Link to="/categories">Category</Link>
             <Link to="/pages">Pages</Link>
             <Link to="/blog">Blog</Link>
             <Link to="/contact">Contact Us</Link>
