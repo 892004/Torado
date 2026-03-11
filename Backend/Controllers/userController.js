@@ -43,6 +43,7 @@ exports.loginUser = async (req , res ) =>{
 
 
 exports.RegisterUser =  async (req , res )=>{
+    console.log(req.body);
     const {name , email , password , phone} = req.body;
 
     const hashedPassword =  await bcrypt.hash(password,10);
