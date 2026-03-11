@@ -1,0 +1,5 @@
+.Wislist .btn:hover{
+    background-color: #CC9078;
+    color: white;
+    transition: 0.5s;
+}

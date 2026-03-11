@@ -1,0 +1,11 @@
+.Filters button:hover{
+    background-color: #CB927A;
+    color: white;
+    transition: 0.4s;
+}
+
+aside button:hover{
+     background-color: #CB927A;
+    color: white;
+    transition: 0.4s;
+}

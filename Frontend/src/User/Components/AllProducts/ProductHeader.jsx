@@ -6,7 +6,7 @@ const ProductHeader = ({ layout, setlayout }) => {
   const normal = "text-gray-400";
 
   return (
-    <section className="Product-header h-16 w-7xl flex items-center justify-between p-5  bg-[#F7F7F7] ">
+    <section className="Product-header h-16 w-8xl flex items-center justify-between p-5  bg-[#F7F7F7] ">
       <div className="sizing flex flex-row items-center justify-center gap-5 border p-2 text-gray-400">
         <span className={`font-bold cursor-pointer ${layout === 1 ? active:normal}`} onClick={() => setlayout(1)}>
           <GiHamburgerMenu />

@@ -11,6 +11,10 @@ import ProtectedRoutes from "./Admin/layout/ProtectedRoutes";
 import UserLayout from "./User/Layout/UserLayout";
 import HomePage from "./User/Pages/HomePage";
 import Categories from './User/Pages/Categories'
+import Wishlist from "./User/Pages/Wishlist";
+import Register from "./User/Pages/Register";
+import Login from "./User/Pages/Login";
+import ForgotPass from "./User/Pages/ForgotPass";
 
 const App = () => {
   return (
@@ -21,7 +25,12 @@ const App = () => {
       <Route path="/" element={<UserLayout />} >
           <Route index element = {<HomePage /> } />
           <Route path="Categories" element ={<Categories />} />
-      </Route>
+          <Route path="Wishlist" element ={<Wishlist />} />
+          <Route path="Register" element={<Register />} />
+          <Route path="Login" element={<Login />} />
+          <Route path= "forgot-pass" element={<ForgotPass />} />
+
+       </Route>
 
       {/* Admin Login */}
       <Route path="/admin/login" element={<AdminLogin />} />

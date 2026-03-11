@@ -10,9 +10,14 @@ import { FaAngleDown } from "react-icons/fa6";
 import Logo from '../../../../src/assets/Images/Logo/logo.svg'
 import "../../Components/Navbar/navbar.css";
 import { BsGrid3X3GapFill } from "react-icons/bs";
+import Wishlist from "../../Pages/Wishlist";
+import { useWishlist } from "../../Context/WishlistContext";
 
 
 const Navbar = () => {
+
+  const { wishlist } = useWishlist();
+
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -58,6 +63,7 @@ const Navbar = () => {
         <p className="font-medium">Free shipping on all orders over $50</p>
 
         <div className="flex items-center justify-center gap-10">
+          <Link to = 'Register'>
           <p className="flex items-center justify-center gap-2 cursor-pointer">
             {" "}
             <span>
@@ -65,6 +71,7 @@ const Navbar = () => {
             </span>
             My Account
           </p>
+          </Link>
 
           <div className="relative">
             <p
@@ -124,10 +131,12 @@ const Navbar = () => {
             <FiSearch className="cursor-pointer  "/>
 
             <div className="relative">
+              <Link to='/Wishlist'>
               <FiHeart className="cursor-pointer  "/>
               <span className="absolute -top-2 -right-2 text-xs bg-[#c58f74] text-white rounded-full px-1">
-                2
+                {wishlist.length}
               </span>
+              </Link>
             </div>
 
             <div className="relative">
