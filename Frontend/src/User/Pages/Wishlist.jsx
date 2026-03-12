@@ -33,7 +33,7 @@ const Wishlist = () => {
           <div>
           <p className="text-gray-500 text-center">Your wishlist is empty</p>
           <div className="btn">
-          <Link to = "/categories" className="text-right flex items-center justify-end border px-5 py-3 mt-2 text-sm font-bold gap-2">Continue Shopping Cart < MdArrowOutward /></Link>
+          <Link to = "/categories" className="text-right flex items-center justify-end border px-5 py-3 mt-2 text-sm font-bold gap-2">Continue Shopping < MdArrowOutward /></Link>
           </div>
           </div>
         ) : (

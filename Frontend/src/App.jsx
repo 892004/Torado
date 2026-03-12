@@ -28,8 +28,7 @@ const App = () => {
           <Route path="Wishlist" element ={<Wishlist />} />
           <Route path="Register" element={<Register />} />
           <Route path="Login" element={<Login />} />
-          <Route path= "forgot-pass" element={<ForgotPass />} />
-
+          <Route path="forgot-pass" element={<ForgotPass />} />
        </Route>
 
       {/* Admin Login */}

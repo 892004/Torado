@@ -7,15 +7,14 @@ import { FaTwitter } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
 import { FaRegUser } from "react-icons/fa";
 import { FaAngleDown } from "react-icons/fa6";
-import Logo from '../../../../src/assets/Images/Logo/logo.svg'
+import Logo from "../../../../src/assets/Images/Logo/logo.svg";
 import "../../Components/Navbar/navbar.css";
 import { BsGrid3X3GapFill } from "react-icons/bs";
 import Wishlist from "../../Pages/Wishlist";
 import { useWishlist } from "../../Context/WishlistContext";
-
+import CartSidebar from "../CartSideBar/CartSideBar";
 
 const Navbar = () => {
-
   const { wishlist } = useWishlist();
 
   const [scrolled, setScrolled] = useState(false);
@@ -32,11 +31,13 @@ const Navbar = () => {
   const Languages = ["Eng", "简体", "Spa", "Rus"];
   const [Lang, setLang] = useState(["Eng"]);
   const [openLang, setopenLang] = useState(false);
+  const [openCart, setOpenCart] = useState(false);
 
   const SelectLang = (item) => {
     setLang(item);
     setopenLang(false);
   };
+
   return (
     <div className="w-full z-50 absolute top-0 left-0">
       {/* ===== TOP BAR ===== */}
@@ -63,14 +64,13 @@ const Navbar = () => {
         <p className="font-medium">Free shipping on all orders over $50</p>
 
         <div className="flex items-center justify-center gap-10">
-          <Link to = 'Register'>
-          <p className="flex items-center justify-center gap-2 cursor-pointer">
-            {" "}
-            <span>
-              <FaRegUser />
-            </span>
-            My Account
-          </p>
+          <Link to="Register">
+            <p className="flex items-center justify-center gap-2 cursor-pointer">
+              <span>
+                <FaRegUser />
+              </span>
+              My Account
+            </p>
           </Link>
 
           <div className="relative">
@@ -109,48 +109,51 @@ const Navbar = () => {
         }`}
       >
         <div className="w-auto max-w-full mx-auto flex items-center justify-between px-10 py-8">
-
           <div className="flex items-center gap-20">
+            {/* LOGO */}
+            <img src={Logo} className="text-2xl font-semibold"></img>
 
-          {/* LOGO */}
-          <img src={Logo} className="text-2xl font-semibold"></img>
-
-          {/* MENU */}
-          <div className="hidden md:flex gap-8 text-[16px]">
-            <Link to="/">Home</Link>
-            <Link to="/shop">Shop </Link>
-            <Link to="/categories">Category</Link>
-            <Link to="/pages">Pages</Link>
-            <Link to="/blog">Blog</Link>
-            <Link to="/contact">Contact Us</Link>
+            {/* MENU */}
+            <div className="hidden md:flex gap-8 text-[16px]">
+              <Link to="/">Home</Link>
+              <Link to="/shop">Shop </Link>
+              <Link to="/categories">Category</Link>
+              <Link to="/pages">Pages</Link>
+              <Link to="/blog">Blog</Link>
+              <Link to="/contact">Contact Us</Link>
+            </div>
           </div>
 
-          </div>
           {/* ICONS */}
           <div className="flex items-center gap-8 text-xl">
-            <FiSearch className="cursor-pointer  "/>
+            <FiSearch className="cursor-pointer" />
 
             <div className="relative">
-              <Link to='/Wishlist'>
-              <FiHeart className="cursor-pointer  "/>
-              <span className="absolute -top-2 -right-2 text-xs bg-[#c58f74] text-white rounded-full px-1">
-                {wishlist.length}
-              </span>
+              <Link to="/Wishlist">
+                <FiHeart className="cursor-pointer" />
+                <span className="absolute -top-2 -right-2 text-xs bg-[#c58f74] text-white rounded-full px-1">
+                  {wishlist.length}
+                </span>
               </Link>
             </div>
 
             <div className="relative">
-              <FiShoppingBag className="cursor-pointer  "/>
+              <FiShoppingBag
+                className="cursor-pointer"
+                onClick={() => setOpenCart(true)}
+              />
               <span className="absolute -top-2 -right-2 text-xs bg-[#c58f74] text-white rounded-full px-1">
                 3
               </span>
-
-
             </div>
-              <BsGrid3X3GapFill className="cursor-pointer  "/>
+
+            <BsGrid3X3GapFill className="cursor-pointer" />
           </div>
         </div>
       </div>
+
+      {/* CART SIDEBAR */}
+      <CartSidebar isOpen={openCart} setIsOpen={setOpenCart} />
     </div>
   );
 };

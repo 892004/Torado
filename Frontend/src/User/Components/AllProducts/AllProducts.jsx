@@ -14,8 +14,10 @@ import { VscFilter } from "react-icons/vsc";
 import { IoCloseOutline } from "react-icons/io5";
 import "../Filters/filter.css";
 import { useWishlist } from "../../Context/WishlistContext";
+import { useCartlist } from "../../Context/CartContext";
 
 const AllProducts = () => {
+  const { cart, addtoCart, removeCart } = useCartlist();
   const { wishlist, addWishlist, removeWishlist } = useWishlist();
   const [layout, setlayout] = useState(3);
   const [products, setproducts] = useState([]);
@@ -138,6 +140,10 @@ const AllProducts = () => {
     return wishlist.some((item) => item.product_id === productId);
   };
 
+  const isInCart = (productId) => {
+    return cart.some((item) => item.product_id === productId);
+  };
+
   const toggleWishlist = (productId) => {
     if (!localStorage.getItem("token")) {
       alert("Please login first");
@@ -152,6 +158,22 @@ const AllProducts = () => {
       addWishlist(productId);
     }
   };
+
+  const toggleCart = (productId) => {
+    if (!localStorage.getItem("token")) {
+      alert("Please Login First");
+      return;
+    }
+
+    const exitingItem = cart.find((item) => item.product_id === productId);
+
+    if (exitingItem) {
+      removeCart(exitingItem.cart_id);
+    } else {
+      addtoCart(productId);
+    }
+  };
+
   return (
     <section
       ref={productsRef}
@@ -397,10 +419,16 @@ const AllProducts = () => {
                           <FaRegHeart />
                         </button>
                         <button
-                          className="bg-white p-4 cursor-pointer rounded-full shadow
-                        opacity-0 translate-x-5
-                        group-hover:opacity-100 group-hover:translate-x-0
-                        transition-all duration-500 delay-150"
+                          onClick={() => toggleCart(item.product_id)}
+                          className={`p-4 cursor-pointer rounded-full shadow
+  opacity-0 translate-x-5
+  group-hover:opacity-100 group-hover:translate-x-0
+  transition-all duration-500 delay-150
+  ${
+    isInCart(item.product_id)
+      ? "bg-green-400 text-white"
+      : "bg-white text-black"
+  }`}
                         >
                           <FiShoppingCart />
                         </button>
