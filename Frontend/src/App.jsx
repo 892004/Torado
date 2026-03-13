@@ -15,6 +15,8 @@ import Wishlist from "./User/Pages/Wishlist";
 import Register from "./User/Pages/Register";
 import Login from "./User/Pages/Login";
 import ForgotPass from "./User/Pages/ForgotPass";
+import Cart from "./User/Pages/Cart";
+import CheckOut from "./User/Pages/CheckOut";
 
 const App = () => {
   return (
@@ -26,6 +28,8 @@ const App = () => {
           <Route index element = {<HomePage /> } />
           <Route path="Categories" element ={<Categories />} />
           <Route path="Wishlist" element ={<Wishlist />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path="checkout" element={<CheckOut />} />
           <Route path="Register" element={<Register />} />
           <Route path="Login" element={<Login />} />
           <Route path="forgot-pass" element={<ForgotPass />} />

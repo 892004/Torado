@@ -13,9 +13,11 @@ import { BsGrid3X3GapFill } from "react-icons/bs";
 import Wishlist from "../../Pages/Wishlist";
 import { useWishlist } from "../../Context/WishlistContext";
 import CartSidebar from "../CartSideBar/CartSideBar";
+import { useCartlist } from "../../Context/CartContext";
 
 const Navbar = () => {
   const { wishlist } = useWishlist();
+  const { cart } = useCartlist();
 
   const [scrolled, setScrolled] = useState(false);
 
@@ -115,12 +117,126 @@ const Navbar = () => {
 
             {/* MENU */}
             <div className="hidden md:flex gap-8 text-[16px]">
-              <Link to="/">Home</Link>
-              <Link to="/shop">Shop </Link>
-              <Link to="/categories">Category</Link>
-              <Link to="/pages">Pages</Link>
-              <Link to="/blog">Blog</Link>
-              <Link to="/contact">Contact Us</Link>
+              <Link to="/" className="flex items-center justify-center">
+                Home
+              </Link>
+
+              <div className="shop-wrapper">
+                <Link className="shop flex items-center justify-center gap-1">
+                  Shop <FaAngleDown />
+                </Link>
+                {/* Shop DropDown */}
+                <div className="shop-dropdown h-90 w-[98%] shadow-2xl bg-white absolute left-2 rounded-xl top-20 flex items-center justify-around invisible">
+                  <div className="links-1 flex flex-col gap-7 list-none text-gray-600 font-medium cursor-pointer">
+                    <li>Shop default</li>
+                    <li>Shop Left Sidebar</li>
+                    <li>Shop Right Sidebar</li>
+                    <li>Shop Banner</li>
+                    <li>Shop Grid 2 column</li>
+                    <li>Shop Grid 3 column</li>
+                  </div>
+                  <div className="links-1 flex flex-col gap-7 list-none text-gray-600 font-medium cursor-pointer">
+                    <li>Shop Grid 4 column</li>
+                    <li>Shop Grid 5 column</li>
+                    <li>Shop List View</li>
+                    <li>Shop Without Sidebar</li>
+                    <li>Product Default</li>
+                    <li>Product PreOrders</li>
+                  </div>
+                  <div className="links-1 flex flex-col gap-7 list-none text-gray-600 font-medium cursor-pointer">
+                    <li>Product Gallary Thumbnail</li>
+                    <li>Product Bottom Thumbnail</li>
+                    <li>Product Left Thumbnail</li>
+                    <li>Product Right Thumbnail</li>
+                    <li>Product Drawer Sidebar</li>
+                    <li>Product Countdown</li>
+                  </div>
+                  <div className="links-1 flex flex-col gap-7 list-none text-gray-600 font-medium cursor-pointer">
+                    <li>Cart</li>
+                    <li>Wishlist</li>
+                    <li>Check Out</li>
+                    <li>Track My Order</li>
+                    <li>Find A Store</li>
+                    <li></li>
+                  </div>
+                </div>
+              </div>
+
+              <Link
+                to="/categories"
+                className="flex items-center justify-center"
+              >
+                Category
+              </Link>
+
+              <div className="page-wrapper">
+                  <Link className="flex items-center justify-center gap-1">
+                Pages <FaAngleDown />
+              </Link>
+
+              {/* Page dropdown */}
+              <div className="  page-dropdown h-105 w-55 absolute top-20 rounded-xl shadow-2xl  bg-white flex items-center justify-center">
+                     <div className="links-1 flex flex-col gap-7 list-none text-gray-600 font-medium cursor-pointer">
+                    <li>About us</li>
+                    <li>Gallary</li>
+                    <li>FAQ</li>
+                    <li>My Account</li>
+                    <li>Tearms & Conditions</li>
+                    <li>Refund Policy</li>
+                    <li>Privacy Policy</li>
+                    <li>404 Error</li>
+                  </div>
+              </div>
+              </div>
+              
+              <div className="blog-wrapper">
+              <Link className="flex items-center justify-center gap-1">
+                Blog <FaAngleDown />
+              </Link>
+
+              <div className="blog-dropdown absolute h-105 w-55 flex items-center justify-center bg-white shadow-2xl rounded-xl">
+
+                      <div className="links-1 flex flex-col gap-7 list-none text-gray-600 font-medium cursor-pointer">
+                    <li>Standard</li>
+                    <li>Blog Grid</li>
+                    <li>Blog Grid Mix</li>
+                    <li>Right Sidebar</li>
+                    <li>Left Sidebar</li>
+                    <li>List View</li>
+
+                    <div className="other-wrapper">
+                          <li className="flex items-center ">Others <FaAngleDown  className="absolute right-2 text-sm"/></li>
+
+                          <div className="other-dropdown absolute -left-50 bottom-10 h-60 w-45 rounded-xl shadow-2xl bg-white flex items-center  justify-start px-10">
+                                <div className="links-1 flex flex-col gap-7 list-none text-gray-600 font-medium cursor-pointer">
+                                  <li>Author</li>
+                                  <li>Category</li>
+                                  <li>tags</li>
+                                  <li>Dates</li>
+                                </div>
+                          </div>
+                    </div>
+
+
+                    <div className="single-wrapper">
+                    <li className="flex items-center ">Single post <FaAngleDown  className="absolute right-2 text-sm"/></li>
+                       <div className="single-dropdown absolute -left-50 bottom-10 h-50 w-50 rounded-xl shadow-2xl bg-white flex items-center  justify-start px-10">
+                                <div className="links-1 flex flex-col gap-7 list-none text-gray-600 font-medium cursor-pointer">
+                                  <li>Without Sidebar</li>
+                                  <li>Right Sidebar</li>
+                                  <li>Left Sidebar</li>
+                                </div>
+                          </div>
+                    </div>
+                    
+                  </div>
+              </div>
+              </div>
+
+
+              <Link to="/contact" className="flex items-center justify-center">
+                Contact Us
+              </Link>
             </div>
           </div>
 
@@ -143,7 +259,7 @@ const Navbar = () => {
                 onClick={() => setOpenCart(true)}
               />
               <span className="absolute -top-2 -right-2 text-xs bg-[#c58f74] text-white rounded-full px-1">
-                3
+                {cart.length}
               </span>
             </div>
 

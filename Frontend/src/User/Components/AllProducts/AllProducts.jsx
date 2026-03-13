@@ -355,7 +355,7 @@ const AllProducts = () => {
 
                       <div className="icons flex flex-row items-center justify-around w-80 px-2 py-6 mt-3 border border-gray-300">
                         <span className="text-xl font-bold border-r border-gray-400 px-5 cursor-pointer">
-                          <MdOutlineShoppingBag />
+                          <MdOutlineShoppingBag  onClick={() => toggleWishlist(item.product_id)}/>
                         </span>
                         <span className="text-xl font-bold border-r border-gray-400 px-5 cursor-pointer">
                           <FaRegHeart />

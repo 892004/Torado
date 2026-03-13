@@ -11,6 +11,29 @@ export const CartProvider = ({ children }) => {
   const userId = user?.user_id;
   const token = localStorage.getItem("token");
 
+  const updateQty = async (cartId, qty) => {
+
+if (qty < 1) return;
+
+try {
+
+await axios.put(`http://localhost:5000/api/cart/${cartId}`,
+  { qty: qty},
+  {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`
+    }
+}
+);
+
+fetchCartList();
+
+} catch (error) {
+console.log("Update Qty Error", error);
+}
+
+};
+
   // Get add to cart
 
   const fetchCartList = async () => {
@@ -76,11 +99,14 @@ export const CartProvider = ({ children }) => {
         cart,
         addtoCart,
         removeCart,
+        updateQty
       }}
     >
       {children}
     </CartContext.Provider>
   );
+
+  
 };
 
 // custom Hooks
