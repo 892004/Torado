@@ -2,9 +2,9 @@ const db = require('../Config/db')
 
 exports.addCart =  async(req ,res) =>{
     try{
-        const{user_id , product_id , qty , price } = req.body
+        const{user_id , product_id} = req.body
 
-        await db.query("CALL sp_add_to_cart(?,?,?,?)",[user_id , product_id , qty , price])
+        await db.query("CALL sp_add_to_cart(?,?)",[user_id , product_id])
 
         res.json({message:'product added to cart'})
      }catch(error){
@@ -26,19 +26,21 @@ exports.getCartByUser = async(req , res ) =>{
 }
 
 exports.updateCartQty = async (req, res) => {
-    try {
-        const { cart_id, qty } = req.body;
+  try {
 
-        await db.query(
-            "CALL sp_update_cart_qty(?,?)",
-            [cart_id, qty]
-        );
+    const { cart_id } = req.params;
+    const { qty } = req.body;
 
-        res.json({ message: "Cart Updated" });
+    await db.query(
+      "CALL sp_update_cart_qty(?,?)",
+      [cart_id, qty]
+    );
 
-    } catch (error) {
-        res.status(500).json({ message: "Server Error", error: error.message });
-    }
+    res.json({ message: "Cart Updated" });
+
+  } catch (error) {
+    res.status(500).json({ message: "Server Error", error: error.message });
+  }
 };
 
 
