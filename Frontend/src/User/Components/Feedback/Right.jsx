@@ -47,17 +47,17 @@ const Right = ({ feedbacks }) => {
       {/* LEFT BUTTON */}
       <button
         onClick={prevHandler}
-        className="absolute -left-82 w-12 h-12 rounded-full border bg-white text-[#CC9078] border-[#CC9078] cursor-pointer flex items-center justify-center"
+        className="absolute -left-82 w-14 h-14 rounded-full bg-gradient-to-r from-[#CC9078] to-[#B87860] text-white shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 flex items-center justify-center border-2 border-white"
       >
-        <GoArrowLeft />
+        <GoArrowLeft className="text-xl font-bold" />
       </button>
 
       {/* RIGHT BUTTON */}
       <button
         onClick={nextHandler}
-        className="absolute right-35 w-12 h-12 rounded-full border text-[#CC9078] bg-white  border-[#CC9078] cursor-pointer flex items-center justify-center"
+        className="absolute right-35 w-14 h-14 rounded-full bg-gradient-to-r from-[#CC9078] to-[#B87860] text-white shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 flex items-center justify-center border-2 border-white"
       >
-        <GoArrowRight />
+        <GoArrowRight className="text-xl font-bold" />
       </button>
 
     </section>

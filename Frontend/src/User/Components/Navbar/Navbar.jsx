@@ -177,8 +177,8 @@ const Navbar = () => {
               {/* Page dropdown */}
               <div className="  page-dropdown h-105 w-55 absolute top-20 rounded-xl shadow-2xl  bg-white flex items-center justify-center">
                      <div className="links-1 flex flex-col gap-7 list-none text-gray-600 font-medium cursor-pointer">
-                    <li>About us</li>
-                    <li>Gallary</li>
+                    <Link to = '/about-us'>About us</Link>
+                    <Link to = '/gallary'>Gallary</Link>
                     <li>FAQ</li>
                     <li>My Account</li>
                     <li>Tearms & Conditions</li>

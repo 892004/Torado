@@ -17,6 +17,8 @@ import Login from "./User/Pages/Login";
 import ForgotPass from "./User/Pages/ForgotPass";
 import Cart from "./User/Pages/Cart";
 import CheckOut from "./User/Pages/CheckOut";
+import Aboutus from "./User/Pages/Aboutus";
+import Gallary from "./User/Pages/Gallary";
 
 const App = () => {
   return (
@@ -33,6 +35,8 @@ const App = () => {
           <Route path="Register" element={<Register />} />
           <Route path="Login" element={<Login />} />
           <Route path="forgot-pass" element={<ForgotPass />} />
+          <Route path='about-us' element={<Aboutus />} />
+          <Route path='gallary' element={<Gallary />} />
        </Route>
 
       {/* Admin Login */}

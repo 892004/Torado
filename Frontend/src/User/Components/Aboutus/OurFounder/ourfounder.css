@@ -1,0 +1,4 @@
+.our-founder .founders img:hover{
+    transform: scale(102%);
+    transition: 0.9s;
+}

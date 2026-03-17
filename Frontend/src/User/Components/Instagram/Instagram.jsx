@@ -40,7 +40,7 @@ const Instagram = () => {
         modules={[Navigation, Pagination, Autoplay]}
         spaceBetween={30}
         slidesPerView={5}
-        pagination={{ clickable: true }}
+        
         autoplay={{ delay: 2500 }}
         className="h-full w-full"
       >

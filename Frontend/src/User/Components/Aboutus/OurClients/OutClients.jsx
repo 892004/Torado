@@ -1,8 +1,6 @@
 import React from 'react'
-import '../Feedback/feedback.css'
 import Left from './Left'
 import Right from './Right'
-
 
 export const Feedbacks = [
     {
@@ -24,17 +22,18 @@ export const Feedbacks = [
         occupation:"Manager"
     },
 ]
-const FeedBack = () => {
-  return (
-    <section className="FeedBack h-screen flex flex-col items-center justify-center mt-20">
-        <h3 className='text-5xl text-[#2A2826] font-bold mb-10'>Our Happy Clients</h3>
 
-        <div className='flex flex-row h-full w-full items-center justify-center gap-10 p-2 '>
-            <Left />
-              <Right feedbacks={Feedbacks}/>
-        </div>
+const OutClients = () => {
+  return (
+    <section className="outClients h-screen w-full flex items-center justify-center ">
+    <Left feedbacks={Feedbacks}/>
+    <Right />
     </section>
+
   )
+
 }
 
-export default FeedBack
+
+
+export default OutClients
