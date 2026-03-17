@@ -48,7 +48,7 @@ const userId = user?.user_id;
     try {
 
 await axios.post(
-  "http://localhost:5000/api/wishlist/add",
+  "http://localhost:5000/api/wishlist/add", 
   {
     user_id: userId,
     product_id: productId

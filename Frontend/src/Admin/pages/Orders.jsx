@@ -1,7 +1,36 @@
-import React from 'react'
-import '../Components/Orders/order.css'
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import "../Components/Orders/order.css";
 
 const Orders = () => {
+
+  const [orders, setOrders] = useState([]);
+
+  useEffect(() => {
+    fetchOrders();
+  }, []);
+
+  const fetchOrders = async () => {
+    try {
+
+      const token = localStorage.getItem("token");
+
+      const res = await axios.get(
+        "http://localhost:5000/api/order/all",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      setOrders(res.data);
+
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <section className="orders">
       <div className="ordersHeader">
@@ -24,63 +53,45 @@ const Orders = () => {
 
           <tbody>
 
-            <tr>
-              <td>#1001</td>
+            {orders.map((order) => (
+              <tr key={order.order_id}>
 
-              <td className="userInfo">
-                <div className="avatar"></div>
-                Kaushal Vora
-              </td>
+                <td>#{order.order_id}</td>
 
-              <td>₹ 12,500</td>
+                <td className="userInfo">
+                  <div className="avatar"></div>
+                  {order.user_name}
+                </td>
 
-              <td>
-                <span className="status pending">Pending</span>
-              </td>
+                <td>₹ {order.total_amount}</td>
 
-              <td className="address">
-                Surat, Gujarat
-              </td>
+                <td>
+                  <span className={`status ${order.order_status}`}>
+                    {order.order_status}
+                  </span>
+                </td>
 
-              <td>19 Feb 2026</td>
+                <td className="address">
+                  {order.address}
+                </td>
 
-              <td>
-                <button className="viewBtn">View Details</button>
-                <button className="updateBtn">Update Status</button>
-              </td>
-            </tr>
+                <td>
+                  {new Date(order.created_at).toLocaleDateString()}
+                </td>
 
-            <tr>
-              <td>#1002</td>
+                <td>
+                  <button className="viewBtn">View Details</button>
+                  <button className="updateBtn">Update Status</button>
+                </td>
 
-              <td className="userInfo">
-                <div className="avatar"></div>
-                Admin Demo
-              </td>
-
-              <td>₹ 45,000</td>
-
-              <td>
-                <span className="status placed">Placed</span>
-              </td>
-
-              <td className="address">
-                Mumbai, Maharashtra
-              </td>
-
-              <td>18 Feb 2026</td>
-
-              <td>
-                <button className="viewBtn">View Details</button>
-                <button className="updateBtn">Update Status</button>
-              </td>
-            </tr>
+              </tr>
+            ))}
 
           </tbody>
         </table>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Orders
+export default Orders;
