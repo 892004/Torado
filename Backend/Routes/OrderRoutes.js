@@ -7,7 +7,8 @@ const {
  getOrderById,
  updateOrderStatus,
  addOrderItem,
- getOrderItems
+ getOrderItems,
+ getAllOrders
 } = require("../Controllers/OrderController");
 
 const { verifyToken, isAdmin } = require("../Middleware/authMiddleware");
@@ -19,11 +20,16 @@ router.post("/add", verifyToken, createOrder);
 // Get user orders
 router.get("/user/:user_id", verifyToken, getOrdersByUser);
 
+// get all orders
+router.get("/all" , verifyToken , getAllOrders) 
+
 // Get order by id
 router.get("/:id", verifyToken, getOrderById);
 
+
 // Update status (admin)
 router.put("/status", verifyToken, isAdmin, updateOrderStatus);
+
 
 // Add order item
 router.post("/item", verifyToken, addOrderItem);

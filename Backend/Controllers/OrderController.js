@@ -81,6 +81,25 @@ exports.updateOrderStatus = async (req, res) => {
 };
 
 
+// 📦 5️⃣ GET ALL ADD ORDER 
+exports.getAllOrders = async (req, res) => {
+  try {
+
+    const [rows] = await db.query("CALL sp_get_all_orders()");
+
+    res.json(rows[0]);
+
+  } catch (error) {
+
+    console.log(error);
+    res.status(500).json({
+      message: "Error fetching orders"
+    });
+
+  }
+};
+
+
 
 // 📦 5️⃣ ADD ORDER ITEM
 exports.addOrderItem = async (req, res) => {
