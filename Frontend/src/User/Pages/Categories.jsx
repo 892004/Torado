@@ -21,7 +21,7 @@ const Category = () => {
 
       <CategorySlider />
       <AllProducts />
-      <Signup />
+  
     </section>
   );
 };

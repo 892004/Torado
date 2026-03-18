@@ -17,28 +17,31 @@ const Login = () => {
     setformData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+ const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    try {
-      const res = await axios.post(
-        "http://localhost:5000/api/users/login",
-        formData,
-      );
-       // TOKEN SAVE
+  try {
+    const res = await axios.post(
+      "http://localhost:5000/api/users/login",
+      formData
+    );
+
+    // ✅ SAFE ZONE
+    console.log(res.data.user);
+
     localStorage.setItem("token", res.data.token);
-
-    // USER SAVE
     localStorage.setItem("user", JSON.stringify(res.data.user));
-      alert("User Logged in Succesfully..");
-      console.log(res.data);
-       // NAVIGATE AFTER LOGIN
+
+    alert("User Logged in Successfully..");
+
     navigate("/");
-    } catch (error) {
-      console.log(error);
-      alert("login Failed !!");
-    }
-  };
+
+  } catch (error) {
+    console.log(error);
+    alert("Login Failed !!");
+  }
+};
+
   return (
     <section className="Login h-screen w-full  flex flex-col items-center justify-center">
       <h3 className="text-6xl  text-[#2A2826]">Login</h3>

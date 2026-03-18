@@ -2,6 +2,7 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "../Components/Navbar/Navbar";
 import Footer from "../Components/Footer/Footer";
+import Signup from "../Components/Signup/Signup";
 
 
 
@@ -13,8 +14,8 @@ const UserLayout = () => {
       <main className="flex-1">
         <Outlet />
       </main>
-
- {/* <Footer /> */}
+ <Signup />
+ <Footer />
     </div>
   );
 };

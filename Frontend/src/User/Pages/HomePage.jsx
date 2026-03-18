@@ -8,7 +8,6 @@ import BottomCard from '../Components/BottomCard/BottomCard'
 import FeedBack from '../Components/Feedback/FeedBack'
 import FeaturedProducts from '../Components/FeaturedProducts/FeaturedProducts'
 import Instagram from '../Components/Instagram/Instagram'
-import Signup from '../Components/Signup/Signup'
 
 const HomePage = () => {
   return (
@@ -22,7 +21,6 @@ const HomePage = () => {
       <FeedBack />
       <FeaturedProducts />
       <Instagram />
-      <Signup />
     </div>
   )
 }

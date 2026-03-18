@@ -15,8 +15,11 @@ import { IoCloseOutline } from "react-icons/io5";
 import "../Filters/filter.css";
 import { useWishlist } from "../../Context/WishlistContext";
 import { useCartlist } from "../../Context/CartContext";
+import { useNavigate } from "react-router-dom";
 
 const AllProducts = () => {
+
+  const navigate = useNavigate()
   const { cart, addtoCart, removeCart } = useCartlist();
   const { wishlist, addWishlist, removeWishlist } = useWishlist();
   const [layout, setlayout] = useState(3);
@@ -147,6 +150,7 @@ const AllProducts = () => {
   const toggleWishlist = (productId) => {
     if (!localStorage.getItem("token")) {
       alert("Please login first");
+      navigate("/login")
       return;
     }
 

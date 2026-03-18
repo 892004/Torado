@@ -1,15 +1,25 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cart, setcart] = useState([]);
+    const navigate = useNavigate();
 
+
+
+const getUserData = () => {
   const user = JSON.parse(localStorage.getItem("user") || "null");
-
-  const userId = user?.user_id;
   const token = localStorage.getItem("token");
+
+  return {
+    userId: user?.user_id,
+    token
+  };
+};
 
   const updateQty = async (cartId, qty) => {
 
@@ -37,12 +47,18 @@ console.log("Update Qty Error", error);
   // Get add to cart
 
   const fetchCartList = async () => {
+
+    const {userId , token } = getUserData();
+
+    if(!userId || !token) return;
+
     try {
       const res = await axios.get(`http://localhost:5000/api/cart/${userId}`, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          Authorization: `Bearer ${token}`,
         },
       });
+
       setcart(res.data);
     } catch (error) {
       console.log("Cart fetch error :", error);
@@ -51,6 +67,15 @@ console.log("Update Qty Error", error);
 
   // add to cart
   const addtoCart = async (productId) => {
+
+    const {userId , token } = getUserData();
+
+    if(!userId || !token){
+       alert("Please login first");
+            navigate("/login");  
+    return;
+    }
+
     try {
       await axios.post(
         "http://localhost:5000/api/cart/add",
@@ -60,7 +85,7 @@ console.log("Update Qty Error", error);
         },
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            Authorization: `Bearer ${token}`,
           },
         },
       );
@@ -73,10 +98,12 @@ console.log("Update Qty Error", error);
   // Remove From cart
 
   const removeCart = async (cartId) => {
+
+    const {token} =  getUserData();
     try {
       await axios.delete(`http://localhost:5000/api/cart/${cartId}`, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          Authorization: `Bearer ${token}`,
         },
       });
 
@@ -88,10 +115,8 @@ console.log("Update Qty Error", error);
 
   //  Load Cart On Page Load
   useEffect(() => {
-    if (userId && localStorage.getItem("token")) {
-      fetchCartList();
-    }
-  }, [userId]);
+    fetchCartList();
+  },);
 
   return (
     <CartContext.Provider

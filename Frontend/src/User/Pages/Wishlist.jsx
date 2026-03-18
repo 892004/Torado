@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { MdArrowOutward } from "react-icons/md";
 import '../Components/wishlist/wishlist.css'
 
+
 const Wishlist = () => {
   const { wishlist, removeWishlist } = useWishlist();
 

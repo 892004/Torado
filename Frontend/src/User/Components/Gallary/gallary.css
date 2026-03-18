@@ -1,0 +1,20 @@
+
+.gallary button::before,
+.gallary button::after{
+    position: absolute;
+    display: block;
+    content: '';
+    height: 100%;
+    width: 100%;
+    color: #CB927A;
+    background-color: transparent;
+    border: 1px solid #CB927A;
+    right: -5px;
+    bottom: -5px;
+}
+
+.gallary button:hover::before,
+.gallary button:hover::after{
+    opacity: 0;
+    transition: 0.5s;
+}   

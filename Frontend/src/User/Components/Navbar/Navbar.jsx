@@ -14,10 +14,13 @@ import Wishlist from "../../Pages/Wishlist";
 import { useWishlist } from "../../Context/WishlistContext";
 import CartSidebar from "../CartSideBar/CartSideBar";
 import { useCartlist } from "../../Context/CartContext";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const { wishlist } = useWishlist();
   const { cart } = useCartlist();
+  const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem("user"));
 
   const [scrolled, setScrolled] = useState(false);
 
@@ -38,6 +41,13 @@ const Navbar = () => {
   const SelectLang = (item) => {
     setLang(item);
     setopenLang(false);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    navigate("/login");
+    window.location.reload();
   };
 
   return (
@@ -65,15 +75,42 @@ const Navbar = () => {
         </p>
         <p className="font-medium">Free shipping on all orders over $50</p>
 
-        <div className="flex items-center justify-center gap-10">
-          <Link to="Register">
-            <p className="flex items-center justify-center gap-2 cursor-pointer">
-              <span>
-                <FaRegUser />
-              </span>
-              My Account
-            </p>
-          </Link>
+        {/* 🔥 UPDATED SECTION */}
+        <div className="flex items-center justify-center gap-5">
+          {user ? (
+            <>
+              <Link to="/account">
+                <p className="flex items-center justify-center gap-2 cursor-pointer">
+                  <span>
+                    <FaRegUser />
+                  </span>
+                  {user.name}
+                </p>
+              </Link>
+
+              <button
+                onClick={handleLogout}
+                className="text-[#CC9078] bg-white py-1 px-2 font-medium cursor-pointer"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <Link to="/Login">
+                <p className="flex items-center justify-center gap-2 cursor-pointer">
+                  <span>
+                    <FaRegUser />
+                  </span>
+                  Login
+                </p>
+              </Link>
+
+              <Link to="/Register">
+                <p className="cursor-pointer">Register</p>
+              </Link>
+            </>
+          )}
 
           <div className="relative">
             <p
@@ -125,7 +162,7 @@ const Navbar = () => {
                 <Link className="shop flex items-center justify-center gap-1">
                   Shop <FaAngleDown />
                 </Link>
-                {/* Shop DropDown */}
+
                 <div className="shop-dropdown h-90 w-[98%] shadow-2xl bg-white absolute left-2 rounded-xl top-20 flex items-center justify-around invisible">
                   <div className="links-1 flex flex-col gap-7 list-none text-gray-600 font-medium cursor-pointer">
                     <li>Shop default</li>
@@ -170,69 +207,40 @@ const Navbar = () => {
               </Link>
 
               <div className="page-wrapper">
-                  <Link className="flex items-center justify-center gap-1">
-                Pages <FaAngleDown />
-              </Link>
+                <Link className="flex items-center justify-center gap-1">
+                  Pages <FaAngleDown />
+                </Link>
 
-              {/* Page dropdown */}
-              <div className="  page-dropdown h-105 w-55 absolute top-20 rounded-xl shadow-2xl  bg-white flex items-center justify-center">
-                     <div className="links-1 flex flex-col gap-7 list-none text-gray-600 font-medium cursor-pointer">
-                    <Link to = '/about-us'>About us</Link>
-                    <Link to = '/gallary'>Gallary</Link>
-                    <li>FAQ</li>
+                <div className="page-dropdown h-105 w-55 absolute top-20 rounded-xl shadow-2xl bg-white flex items-center justify-center">
+                  <div className="links-1 flex flex-col gap-7 list-none text-gray-600 font-medium cursor-pointer">
+                    <Link to="/about-us">About us</Link>
+                    <Link to="/gallary">Gallary</Link>
+                    <Link to="/faqs">FAQ</Link>
                     <li>My Account</li>
                     <li>Tearms & Conditions</li>
                     <li>Refund Policy</li>
                     <li>Privacy Policy</li>
                     <li>404 Error</li>
                   </div>
+                </div>
               </div>
-              </div>
-              
+
               <div className="blog-wrapper">
-              <Link className="flex items-center justify-center gap-1">
-                Blog <FaAngleDown />
-              </Link>
+                <Link className="flex items-center justify-center gap-1">
+                  Blog <FaAngleDown />
+                </Link>
 
-              <div className="blog-dropdown absolute h-105 w-55 flex items-center justify-center bg-white shadow-2xl rounded-xl">
-
-                      <div className="links-1 flex flex-col gap-7 list-none text-gray-600 font-medium cursor-pointer">
+                <div className="blog-dropdown absolute h-105 w-55 flex items-center justify-center bg-white shadow-2xl rounded-xl">
+                  <div className="links-1 flex flex-col gap-7 list-none text-gray-600 font-medium cursor-pointer">
                     <li>Standard</li>
                     <li>Blog Grid</li>
                     <li>Blog Grid Mix</li>
                     <li>Right Sidebar</li>
                     <li>Left Sidebar</li>
                     <li>List View</li>
-
-                    <div className="other-wrapper">
-                          <li className="flex items-center ">Others <FaAngleDown  className="absolute right-2 text-sm"/></li>
-
-                          <div className="other-dropdown absolute -left-50 bottom-10 h-60 w-45 rounded-xl shadow-2xl bg-white flex items-center  justify-start px-10">
-                                <div className="links-1 flex flex-col gap-7 list-none text-gray-600 font-medium cursor-pointer">
-                                  <li>Author</li>
-                                  <li>Category</li>
-                                  <li>tags</li>
-                                  <li>Dates</li>
-                                </div>
-                          </div>
-                    </div>
-
-
-                    <div className="single-wrapper">
-                    <li className="flex items-center ">Single post <FaAngleDown  className="absolute right-2 text-sm"/></li>
-                       <div className="single-dropdown absolute -left-50 bottom-10 h-50 w-50 rounded-xl shadow-2xl bg-white flex items-center  justify-start px-10">
-                                <div className="links-1 flex flex-col gap-7 list-none text-gray-600 font-medium cursor-pointer">
-                                  <li>Without Sidebar</li>
-                                  <li>Right Sidebar</li>
-                                  <li>Left Sidebar</li>
-                                </div>
-                          </div>
-                    </div>
-                    
                   </div>
+                </div>
               </div>
-              </div>
-
 
               <Link to="/contact" className="flex items-center justify-center">
                 Contact Us

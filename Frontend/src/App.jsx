@@ -19,6 +19,7 @@ import Cart from "./User/Pages/Cart";
 import CheckOut from "./User/Pages/CheckOut";
 import Aboutus from "./User/Pages/Aboutus";
 import Gallary from "./User/Pages/Gallary";
+import Faq from "./User/Pages/Faq";
 
 const App = () => {
   return (
@@ -37,6 +38,7 @@ const App = () => {
           <Route path="forgot-pass" element={<ForgotPass />} />
           <Route path='about-us' element={<Aboutus />} />
           <Route path='gallary' element={<Gallary />} />
+          <Route path='faqs' element={<Faq />} />
        </Route>
 
       {/* Admin Login */}
