@@ -10,7 +10,7 @@ import AdminLogin from "./Admin/pages/AdminLogin";
 import ProtectedRoutes from "./Admin/layout/ProtectedRoutes";
 import UserLayout from "./User/Layout/UserLayout";
 import HomePage from "./User/Pages/HomePage";
-import Categories from './User/Pages/Categories'
+import Categories from "./User/Pages/Categories";
 import Wishlist from "./User/Pages/Wishlist";
 import Register from "./User/Pages/Register";
 import Login from "./User/Pages/Login";
@@ -20,25 +20,34 @@ import CheckOut from "./User/Pages/CheckOut";
 import Aboutus from "./User/Pages/Aboutus";
 import Gallary from "./User/Pages/Gallary";
 import Faq from "./User/Pages/Faq";
+import TermsAndCondition from "./User/Pages/TermsAndCondition";
+import RefundPolicy from "./User/Pages/RefundPolicy";
+import PrivacyPolicy from "./User/Pages/Policy";
+import NotFound from "./User/Pages/NotFound";
+import Contactus from "./User/Pages/Contactus";
 
 const App = () => {
   return (
     <Routes>
-
       {/* User Side  */}
 
-      <Route path="/" element={<UserLayout />} >
-          <Route index element = {<HomePage /> } />
-          <Route path="Categories" element ={<Categories />} />
-          <Route path="Wishlist" element ={<Wishlist />} />
-          <Route path="cart" element={<Cart />} />
-          <Route path="checkout" element={<CheckOut />} />
-          <Route path="Register" element={<Register />} />
-          <Route path="Login" element={<Login />} />
-          <Route path="forgot-pass" element={<ForgotPass />} />
-          <Route path='about-us' element={<Aboutus />} />
-          <Route path='gallary' element={<Gallary />} />
-          <Route path='faqs' element={<Faq />} />
+      <Route path="/" element={<UserLayout />}>
+        <Route index element={<HomePage />} />
+        <Route path="Categories" element={<Categories />} />
+        <Route path="Wishlist" element={<Wishlist />} />
+        <Route path="cart" element={<Cart />} />
+        <Route path="checkout" element={<CheckOut />} />
+        <Route path="Register" element={<Register />} />
+        <Route path="Login" element={<Login />} />
+        <Route path="forgot-pass" element={<ForgotPass />} />
+        <Route path="about-us" element={<Aboutus />} />
+        <Route path="gallary" element={<Gallary />} />
+        <Route path="faqs" element={<Faq />} />
+        <Route path="terms&condition" element={<TermsAndCondition />} />
+        <Route path="refund-policy" element={<RefundPolicy />} />
+        <Route path="privacy-policy" element={<PrivacyPolicy />} />
+        <Route path='404' element={<NotFound />} />
+        <Route path="contact-us" element={<Contactus />} />
        </Route>
 
       {/* Admin Login */}
@@ -61,8 +70,7 @@ const App = () => {
         <Route path="categories" element={<Category />} />
         <Route path="orders" element={<Orders />} />
       </Route>
-
-   </Routes>
+    </Routes>
   );
 };
 

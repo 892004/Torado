@@ -216,11 +216,11 @@ const Navbar = () => {
                     <Link to="/about-us">About us</Link>
                     <Link to="/gallary">Gallary</Link>
                     <Link to="/faqs">FAQ</Link>
-                    <li>My Account</li>
-                    <li>Tearms & Conditions</li>
-                    <li>Refund Policy</li>
-                    <li>Privacy Policy</li>
-                    <li>404 Error</li>
+                    <Link to="/login">My Account</Link>
+                    <Link to="/terms&condition">Tearms & Conditions</Link>
+                    <Link to="/refund-policy">Refund Policy</Link>
+                    <Link to="/privacy-policy">Privacy Policy</Link>
+                    <Link to="/404">404 Error</Link>
                   </div>
                 </div>
               </div>
@@ -242,7 +242,7 @@ const Navbar = () => {
                 </div>
               </div>
 
-              <Link to="/contact" className="flex items-center justify-center">
+              <Link to="/contact-us" className="flex items-center justify-center">
                 Contact Us
               </Link>
             </div>
