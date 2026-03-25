@@ -1,0 +1,18 @@
+.Products-details .review button::before,
+.Products-details .review button::after{
+    position: absolute;
+    display: block;
+    content: '';
+    height: 100%;
+    width: 100%;
+    color: #CB927A;
+    background-color: transparent;
+    border: 1px solid #CB927A;
+    right: -5px;
+    bottom: -5px;
+}
+.Products-details .review:hover button::before,
+.Products-details .review:hover button::after{
+    opacity: 0;
+    transition: 0.5s;
+}   

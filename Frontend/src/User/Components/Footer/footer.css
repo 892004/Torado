@@ -4,18 +4,103 @@
     cursor:pointer;
     color: white;
 }
+/* ===== Footer Base ===== */
+.Footer {
+    width: 100%;
+}
 
-.Footer .bottom-bar::after,
-.Footer .bottom-bar::before{
-    position: absolute;
-    display: block;
-    content: '';
-    height: 0.1px;
-    width: 93%;
-    left: 5%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgb(173, 170, 170);
-    bottom: 80px;
+/* ===== Tablet ===== */
+@media (max-width: 1024px) {
+    .Footer > div:first-child {
+        flex-wrap: wrap;
+        gap: 40px;
+    }
+
+    .Footer .logo,
+    .Footer .QuickLink,
+    .Footer .UsefulLinks,
+    .Footer .Categories,
+    .Footer .Contact {
+        width: 45%;
+    }
+
+    .Footer .bottom-bar {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 768px) {
+
+    .Footer {
+        padding: 40px 20px;
+    }
+
+    /* Top section */
+    .Footer > div:first-child {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .Footer .logo,
+    .Footer .QuickLink,
+    .Footer .UsefulLinks,
+    .Footer .Categories,
+    .Footer .Contact {
+        width: 100%;
+    }
+
+    /* Social icons center */
+    .Footer .social-icons {
+        justify-content: flex-start;
+    }
+
+    /* Bottom bar */
+    .Footer .bottom-bar {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .Footer .bottom-bar p {
+        margin: 0;
+        font-size: 12px;
+    }
+
+    .Footer .payment-methods {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .Footer .payment-methods span {
+       font-size: 14px;
+    }
+
+     .Footer .payment-methods img {
+        height: 10px;
+        width: 30px;
+    }
+}
+
+/* ===== Small Mobile ===== */
+@media (max-width: 480px) {
+
+    .Footer {
+        padding: 30px 15px;
+    }
+
+    .Footer h3 {
+        font-size: 16px;
+    }
+
+    .Footer li,
+    .Footer p {
+        font-size: 14px;
+    }
+
+    .Footer .payment-methods img {
+        height: 25px;
+    }
 }

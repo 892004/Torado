@@ -18,3 +18,49 @@
     opacity: 0;
     transition: 0.5s;
 }   
+
+
+
+@media (max-width:768px) {
+    .Login{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .Login h3{
+        font-size:26px;
+    }
+    .Login form{
+        display: flex;
+        align-items: start;
+        justify-content: start;
+        padding: 30px;
+    }
+    .Login form input{
+        width: 300px;
+    }
+}
+
+
+@media (max-width:768px) {
+    .Register{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      margin-top: 30%;
+    }
+    .Register h3{
+        font-size:26px;
+    }
+    .Register form{
+        display: flex;
+        align-items: start;
+        justify-content: start;
+        padding: 30px;
+    }
+    .Register form input{
+        width: 300px;
+    }
+}

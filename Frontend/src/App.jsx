@@ -25,6 +25,10 @@ import RefundPolicy from "./User/Pages/RefundPolicy";
 import PrivacyPolicy from "./User/Pages/Policy";
 import NotFound from "./User/Pages/NotFound";
 import Contactus from "./User/Pages/Contactus";
+import ProductDetails from "./User/Pages/ProductDetails";
+import TrackOrder from "./User/Pages/TrackOrder";
+import Blog from "./User/Pages/Blog";
+import BlogDetails from "./User/Pages/BlogDetails";
 
 const App = () => {
   return (
@@ -48,7 +52,11 @@ const App = () => {
         <Route path="privacy-policy" element={<PrivacyPolicy />} />
         <Route path='404' element={<NotFound />} />
         <Route path="contact-us" element={<Contactus />} />
-       </Route>
+        <Route path="Product/:id" element={<ProductDetails />} />
+        <Route path='track-order' element={<TrackOrder />} />
+        <Route path="Blog" element={<Blog />}  />
+        <Route path="blogdetails/:id" element={<BlogDetails />} />
+        </Route>
 
       {/* Admin Login */}
       <Route path="/admin/login" element={<AdminLogin />} />

@@ -4,4 +4,6 @@ html , body{
   font-family: "Prata", serif;
   font-family: "Outfit", sans-serif;
   color: black;
+  overflow-x: hidden;
+
 }

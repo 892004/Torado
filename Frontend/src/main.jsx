@@ -6,6 +6,7 @@ import { WishlistProvider } from "./User/Context/WishlistContext";
 import { CartProvider } from "./User/Context/CartContext.jsx";
 
 createRoot(document.getElementById("root")).render(
+ 
   <BrowserRouter>
     <WishlistProvider>
       <CartProvider>
@@ -13,4 +14,5 @@ createRoot(document.getElementById("root")).render(
       </CartProvider>
     </WishlistProvider>
   </BrowserRouter>,
+
 );

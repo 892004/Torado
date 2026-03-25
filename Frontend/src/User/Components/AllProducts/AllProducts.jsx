@@ -18,8 +18,7 @@ import { useCartlist } from "../../Context/CartContext";
 import { useNavigate } from "react-router-dom";
 
 const AllProducts = () => {
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { cart, addtoCart, removeCart } = useCartlist();
   const { wishlist, addWishlist, removeWishlist } = useWishlist();
   const [layout, setlayout] = useState(3);
@@ -150,7 +149,7 @@ const AllProducts = () => {
   const toggleWishlist = (productId) => {
     if (!localStorage.getItem("token")) {
       alert("Please login first");
-      navigate("/login")
+      navigate("/login");
       return;
     }
 
@@ -359,7 +358,9 @@ const AllProducts = () => {
 
                       <div className="icons flex flex-row items-center justify-around w-80 px-2 py-6 mt-3 border border-gray-300">
                         <span className="text-xl font-bold border-r border-gray-400 px-5 cursor-pointer">
-                          <MdOutlineShoppingBag  onClick={() => toggleWishlist(item.product_id)}/>
+                          <MdOutlineShoppingBag
+                            onClick={() => toggleWishlist(item.product_id)}
+                          />
                         </span>
                         <span className="text-xl font-bold border-r border-gray-400 px-5 cursor-pointer">
                           <FaRegHeart />
@@ -391,7 +392,12 @@ const AllProducts = () => {
               >
                 {currentProduct.map((item) => (
                   <div key={item.product_id} className="group">
-                    <div className="relative bg-gray-100 overflow-hidden">
+                    <div
+                      className="relative bg-gray-100 overflow-hidden"
+                      onDoubleClick={() =>
+                        navigate(`/product/${item.product_id}`)
+                      }
+                    >
                       <img
                         src={`http://localhost:5000/uploads/${item.thumbnail}`}
                         className={`w-full object-cover transition-transform bg-transparent duration-800 ease-in-out scale-80 group-hover:scale-85 ${

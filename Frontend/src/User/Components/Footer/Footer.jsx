@@ -19,7 +19,9 @@ import '../Footer/footer.css'
 
 const Footer = () => {
   return (
-    <section className="Footer h-100 w-full  p-10 flex flex-row items-start justify-center gap-30">
+    <section className="Footer w-full p-10 flex flex-col">
+
+      <div className="flex flex-row justify-between w-full">
       {/* First Part */}
       <div className="logo flex flex-col items-start gap-5">
         <img src={Logo} />
@@ -84,15 +86,15 @@ const Footer = () => {
       </div>
 
       {/* fifth part */}
-        <div className="Contact Info flex flex-col items-start gap-3">
+        <div className="Contact flex flex-col items-start gap-3">
           <h3  className="text-xl opacity-90">Contact Info</h3>
           <p className="flex items-start opacity-70 gap-2"><IoLocationOutline className="mt-1 text-[#CB927A] opacity-100"/> 94 East 84th Street, 9th Floor, <br/>New York, GA 30030 </p>
           <p className="flex items-center justify-center opacity-70 gap-2 cursor-pointer"><MdOutlineMailOutline className="text-[#CB927A] opacity-100 " />support@torado.com</p>
           <p className="flex items-center justify-center opacity-70 gap-2"><FiPhoneCall className="text-[#CB927A] opacity-100" />+01 947 847 4488</p>
       </div>
-    
+</div>
 
-    <div className="bottom-bar absolute  h-20 w-full bottom-0 flex items-center justify-between p-10">
+    <div className="bottom-bar mt-10 pt-5 border-t flex items-center justify-between w-full">
         <p className="mx-8 text-gray-500 text-sm">© Copyright <span className="text-[#CB927A]">Torado </span> All Rights Reserved by  <span className="text-[#CB927A] cursor-pointer">EnvyTheme</span></p>
 
         <div className="payment-methods flex flex-row gap-3">

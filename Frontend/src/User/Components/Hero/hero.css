@@ -43,3 +43,42 @@
 .animate-fadeIn {
   animation: fadeIn 0.5s ease forwards;
 }
+
+
+
+
+@media (max-width: 768px) {
+
+
+  .Hero .left-side,
+  .Hero .right-side {
+    width: 100% !important;
+    position: relative;
+  }
+
+  .Hero .right-side img {
+    height: auto !important;
+    max-width: 100%;
+  }
+
+  .Hero .left-side .content {
+    top: 20% !important;
+    padding: 0 15px;
+  }
+
+  .Hero .left-side h1 {
+    font-size: 32px !important;
+    line-height: 1.3;
+  }
+
+  .Hero .left-side p {
+    font-size: 14px !important;
+  }
+
+  .Hero .navigate-button {
+    right: 10px !important;
+    top: auto !important;
+    bottom: 20px;
+    margin: 0 !important;
+  }
+}

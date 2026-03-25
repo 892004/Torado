@@ -1,4 +1,4 @@
-import React from 'react'
+import Reac from 'react'
 import { Link } from 'react-router-dom'
 import { SlLocationPin } from "react-icons/sl";
 import { MdOutlineMailOutline } from "react-icons/md";
@@ -7,8 +7,9 @@ import { LuPhone } from "react-icons/lu";
 
 
 const RefundPolicy = () => {
+
   return (
-   <section className="refund-policy h-auto w-full flex flex-col mt-20">
+   <section className="refund-policy h-auto  w-full flex flex-col mt-20">
     <h3 className="text-5xl text-[#2A2826] mt-20 text-center">
         Refund Policy
       </h3>
@@ -101,6 +102,8 @@ const RefundPolicy = () => {
 <span className='flex items-center justify-center gap-2 opacity-80'><LuPhone className='text-[#CC9078] opcity-100'/>+01 947 847 4488</span>  </p>
 
 </div>
+
+
    </section>
   )
 }

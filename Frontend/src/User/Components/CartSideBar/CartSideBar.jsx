@@ -11,7 +11,6 @@ const CartSidebar = ({ isOpen, setIsOpen }) => {
   const navigate = useNavigate();
   const { cart, removeCart, updateQty } = useCartlist();
 
-  console.log(cart);
 
   const total = cart.reduce((sum, item) => {
     return sum + item.discount_price * item.qty;

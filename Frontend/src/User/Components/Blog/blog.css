@@ -1,0 +1,33 @@
+.Blog .blog-card img:hover{
+    transform: scale(102%);
+    transition: 0.99s;
+}
+
+.Blog .blog-card h3:hover{
+    color:#CC9078 ;
+    transition: 0.5s;
+}
+
+.Blog .blog-card button::after,
+.Blog .blog-card button::before{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    content: '';
+    height: 0.2px;
+    width: 0%;
+    background-color: black;
+}
+
+
+.Blog .blog-card button:hover::after,
+.Blog .blog-card button:hover::before{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    content: '';
+    height: 0.2px;
+    width: 100%;
+    background-color: black;
+    transition: 0.9s;
+}
