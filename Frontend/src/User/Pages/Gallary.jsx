@@ -14,14 +14,14 @@ const Gallary = () => {
         <Link to = '/' className='opacity-80'> Home  /</Link><span className='text-[#CC9078]'>Gallary</span>
         </div>
 
-        <h3 className="flex items-center justify-center text-5xl font-semibold text-[#2A2826] mx-15 mt-10">
+        <h3 className="heading flex items-center justify-center text-5xl font-semibold text-[#2A2826] mx-15 mt-10">
                 <span className="text-[#CB927A]">
                   <RiInstagramFill />
                 </span>
                 # Love Torado On Instagram
         </h3>
 
-      <div className="grid grid-cols-4 gap-6 mt-20">
+      <div className="cards grid grid-cols-4 gap-6 mt-20">
         {galleryData.map((item) => (
           <GalleryCard key={item.id} image={item.image} isEven={item.id % 2 === 0}/>
         ))}

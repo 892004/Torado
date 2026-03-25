@@ -1,0 +1,247 @@
+@media (max-width:768px) {
+    .Aboutus{
+        display: flex ;
+        align-items: center;
+        justify-content: start;
+        flex-direction: column;
+}
+    .Aboutus h3{
+        font-size: 26px;
+    }
+}
+
+/* Our Story */
+@media (max-width:768px) {
+    .OurStory{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0px;
+    }
+    .OurStory h3{
+        font-size: 28px;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .OurStory .ourstory-content{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+     .left-sec{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: 100%;
+        height: auto;
+        padding: 5px;
+    }
+     .right-sec{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 12px;
+    }
+     .right-sec h3{
+        font-size: 22px;
+        font-weight: 600;
+     }
+    .right-sec .content{
+        width: 340px;
+        position: absolute;
+        top: 40px;
+        left: 0px;
+        padding: 20px;
+    }
+    .right-sec .content p{
+        width: 100%;
+        padding-right: 10px;
+        font-size: 14px;
+    }
+
+    .right-sec .our-philosophy{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: start;
+        padding-bottom: 20px;
+    }
+
+    .right-sec .our-philosophy h3{
+        transform: translateY(-30px);
+    }
+    .right-sec .our-philosophy p{
+        transform: translateY(-60px);
+    }
+
+}
+
+/* Out Founder */
+@media (max-width:768px) {
+    .our-founder{
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: start;
+      margin-top: 550px;
+      position: relative;
+      padding: 10px;
+    }
+
+    .our-founder h3{
+        font-weight: 600;
+        margin-left: 10px;
+    }
+
+    .our-founder .founders{
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        gap: 10px;
+    }
+    
+    .our-founder .founders .team1{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 5px;
+    }
+    .our-founder .founders .team1 h3{
+        font-weight: 500;
+        margin: 0px;
+    }
+    .our-founder .founders .team2 h3{
+        font-weight: 500;
+         margin: 0px;
+    }
+    .our-founder .founders .team3 h3{
+        font-weight: 500;
+         margin: 0px;
+    }
+    .our-founder .founders .team2{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 5px;
+    }
+    .our-founder .founders .team3{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 5px;
+    }
+    .our-founder .founders .team1 img{
+        height: 50%;
+    }
+    .our-founder .founders .team2 img{
+        height: 50%;
+    }
+    .our-founder .founders .team3 img{
+        height: 50%;
+    }
+}
+
+
+/* our Happy Clients */
+@media (max-width:768px) {
+    .ourClients{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: start;
+        padding: 20px;
+        position: relative;
+    }
+    .left h3{
+        font-size: 26px;
+        padding-bottom: 0px;
+        padding-left: 80px;
+        width: 320px;
+        font-weight: 600;
+    }
+
+    .left .feedback-card{
+        width: 320px;
+        height: 300px;
+        margin-top: 20px;
+        margin-right: 340px;
+        transform: translateX(0);
+        padding: 4px;
+        position: relative;
+    }
+
+    .left .feedback-card h1{
+        font-size: 30px;
+    }
+    .left .feedback-card p{
+        font-size: 16px;
+        line-height: 20px;
+        text-align: center;
+    }
+    .left .feedback-card h3{
+        font-size: 16px;
+        line-height: 20px;
+        margin-right: 60px;
+    }
+    .left .feedback-card span{
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    .left .feedback-card .btn-left{
+        height: 40px;
+        width: 40px;
+        position: absolute;
+        left: 20px;
+        margin-top:50px;
+    }
+
+    .left .feedback-card .btn-right{
+        height: 40px;
+        width: 40px;
+        position: absolute;
+        right: 20px;
+        margin-top:50px;
+    }
+
+    .Right{
+        width: 280px;
+        margin-top: 30px;
+    }
+}
+
+/* Out Brands */
+@media (max-width:768px){
+.Populer-brands{
+    position: relative;
+    height: 200px;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    padding: 20px;
+    font-weight: 600;
+}
+
+.Populer-brands .swiper {
+  transform: translateY(-40px);
+  padding: 20px;
+}
+
+.Populer-brands .swiper-slide {
+  display: flex;
+  justify-content: center;
+}
+
+.Populer-brands .swiper-slide img {
+  width: 100%;
+  max-width: 100px;
+  height: auto;
+  object-fit: contain;
+}
+}

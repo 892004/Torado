@@ -5,6 +5,7 @@ import OurFounder from '../Components/Aboutus/OurFounder/OurFounder'
 import OutClients from '../Components/Aboutus/OurClients/OutClients'
 import PopulerBrands from '../Components/Aboutus/PopulerBrands/PopulerBrands'
 import Instagram from '../Components/Instagram/Instagram'
+import '../Components/Aboutus/aboutus.css'
 
 const Aboutus = () => {
   return (
@@ -19,8 +20,6 @@ const Aboutus = () => {
         <OutClients />
         <PopulerBrands />
         <hr/>
-        <div className="mt-10">
-        </div>
         <Instagram />
     </section>
   )

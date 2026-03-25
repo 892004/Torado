@@ -18,3 +18,28 @@
     opacity: 0;
     transition: 0.5s;
 }   
+
+
+@media (max-width:768px) {
+    .gallary{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 100px;
+    }
+
+    .gallary h3{
+        font-size: 30px;
+    }
+
+    .gallary .heading{
+        width: 100%;
+        font-size: 20px;
+    }
+
+    .gallary .cards{
+        display: grid;
+       grid-template-columns: repeat(2, 1fr);
+    }
+}

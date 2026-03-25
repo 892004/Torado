@@ -25,7 +25,7 @@ export const Feedbacks = [
 
 const OutClients = () => {
   return (
-    <section className="outClients h-screen w-full flex items-center justify-center ">
+    <section className="ourClients h-screen w-full flex items-center justify-center ">
     <Left feedbacks={Feedbacks}/>
     <Right />
     </section>

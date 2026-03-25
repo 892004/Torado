@@ -1,5 +1,6 @@
 import React from 'react'
 import Cartegorybg from '../../../../assets/Images/categories/category-bg.jpg'
+import '../../../Components/Aboutus/aboutus.css'
 
 const LeftSec = () => {
   return (

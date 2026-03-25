@@ -28,7 +28,7 @@ const InstaPhotoes = [
 ];
 const Instagram = () => {
   return (
-    <section className="Instagram h-screen w-full flex flex-col items-start justify- p-10 relative gap-20">
+    <section className="Instagram  w-full flex flex-col items-start justify- py-2 px-2 relative gap-20">
       <h3 className="flex items-center justify-center text-5xl font-semibold text-[#2A2826] mx-15">
         <span className="text-[#CB927A]">
           <RiInstagramFill />
@@ -40,8 +40,27 @@ const Instagram = () => {
         modules={[Navigation, Pagination, Autoplay]}
         spaceBetween={30}
         slidesPerView={5}
-        
         autoplay={{ delay: 2500 }}
+       breakpoints={{
+    0: {
+      slidesPerView: 1,   // 🔥 mobile
+      spaceBetween: 10,
+    },
+    480: {
+      slidesPerView: 2,
+      spaceBetween: 10,
+    },
+    768: {
+      slidesPerView: 3,
+      spaceBetween: 15,
+    },
+    1024: {
+      slidesPerView: 4,
+    },
+    1280: {
+      slidesPerView: 5,
+    },
+  }}
         className="h-full w-full"
       >
         {InstaPhotoes.map((img, index) => (

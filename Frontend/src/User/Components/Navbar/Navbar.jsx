@@ -309,7 +309,7 @@ const Navbar = () => {
               {openMenu ? <RxCross2 /> : <RxHamburgerMenu />}
 
               <div
-                className={`responsive-navbar absolute  w-[300px] -right-7 top-12  bg-white  shadow flex flex-col  items-start justify-start p-2 gap-4 rounded
+                className={`responsive-navbar absolute  w-[300px] -right-7 top-12  bg-white  shadow flex flex-col  items-start justify-start p-2 gap-2 rounded
     transition-all duration-300 origin-top
     ${
       openMenu

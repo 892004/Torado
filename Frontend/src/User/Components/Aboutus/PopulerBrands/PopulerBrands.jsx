@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import '../../Aboutus/aboutus.css'
 // import modules
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import Brand1 from '../../../../assets/Images/Brands/brand-1.png'
@@ -18,19 +19,36 @@ import Brand6 from '../../../../assets/Images/Brands/brand-6.png'
 
 const PopulerBrands = () => {
   return (
-    <section className="Populer-brands relative h-50 w-full flex flex-row items-center justify-center p-30 gap-10">
+    <section className="Populer-brands relative  w-full flex flex-row items-center justify-center py-10 px-5 gap-5">
         <h3 className='text-5xl absolute top-10 opacity-90 '>Populer Brands</h3>
      <Swiper
       modules={[Navigation, Pagination, Autoplay]}
       slidesPerView={5}
-      spaceBetween={30}
+      spaceBetween={10}
       loop={true}
-      speed={10000}
+      speed={9000}
       autoplay={{
-    delay: 0,
-    disableOnInteraction: false,
+     delay: 0,
+     disableOnInteraction: false,
   }}
-  className='mt-30'
+breakpoints={{
+  0: {
+    slidesPerView: 2,
+    spaceBetween: 10,
+  },
+  480: {
+    slidesPerView: 3,
+    spaceBetween: 10,
+  },
+  768: {
+    slidesPerView: 4,
+    spaceBetween: 30,
+  },
+  1024: {
+    slidesPerView: 5,
+  },
+}}
+  className='mt-30 '
     >
       <SwiperSlide>
         <img src={Brand1} alt="banner1"/>
