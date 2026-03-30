@@ -1,9 +1,10 @@
 import React from 'react'
+import '../BlogDetails/blogdetails.css'
 
 
 const LeftScetion = ({blog}) => {
   return (
-    <section className="Left-section h-full w-[70%] flex flex-col items-start gap-2 ">
+    <section className="Left-section w-[70%] flex flex-col items-start gap-2 ">
            <img src={blog.img} alt="" className="w-full h-[1100px] object-cover" />
            <p>{blog.name}</p>
            <h3 className='font-semibold text-3xl'>In 2025, new jewelry will enter the market</h3>

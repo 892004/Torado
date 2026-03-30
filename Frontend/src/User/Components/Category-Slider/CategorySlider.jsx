@@ -1,35 +1,40 @@
 import React, { useState } from "react";
 import { categories } from "../../../../src/data/categories";
+import  '../AllProducts/MainCategory.css'
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 
 import { Navigation } from "swiper/modules";
-
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 
-const CategorySlider = () => {
+const   CategorySlider = () => {
   const [swiperRef, setSwiperRef] = useState(null);
 
   return (
-    <section className="category-slider w-full py-12 flex items-center justify-center relative">
+    <sction className="category-slider w-full py-12 flex items-center justify-center relative">
 
       <Swiper
-        slidesPerView={6}
-        spaceBetween={20}
-        speed={2000}
-        loop={true}
-        onSwiper={setSwiperRef}
-        modules={[Navigation]}
-        grabCursor={true}
-        allowTouchMove={true}
-        className="w-[90%]"
-      >
+  slidesPerView={2}   // default → mobile
+  spaceBetween={20}
+  speed={2000}
+  loop={true}
+  onSwiper={setSwiperRef}
+  modules={[Navigation]}
+  grabCursor={true}
+  allowTouchMove={true}
+  breakpoints={{
+    768: {
+      slidesPerView: 6
+    }
+  }}
+  className="w-[90%]"
+>
         {categories.map((item, index) => (
           <SwiperSlide key={index} className="flex justify-center">
             
-            <div className="flex flex-col items-center text-center">
+            <div className="swiper-img flex flex-col items-center text-center">
 
               <img
                 src={item.img}
@@ -49,7 +54,7 @@ const CategorySlider = () => {
 
       {/* Navigation Buttons */}
 
-      <div className="absolute w-[95%] flex justify-between top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50">
+      <div className="buttons absolute w-[95%] flex justify-between top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50">
 
         <button
           onClick={() => swiperRef?.slidePrev()}
@@ -67,7 +72,7 @@ const CategorySlider = () => {
 
       </div>
 
-    </section>
+    </sction>
   );
 };
 

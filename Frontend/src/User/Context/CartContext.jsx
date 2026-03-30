@@ -116,7 +116,7 @@ console.log("Update Qty Error", error);
   //  Load Cart On Page Load
   useEffect(() => {
     fetchCartList();
-  },);
+  },[]);
 
   return (
     <CartContext.Provider

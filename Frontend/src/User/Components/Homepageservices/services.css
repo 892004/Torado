@@ -1,0 +1,26 @@
+@media (max-width:768px) {
+    .Services{
+        display:flex ;
+        flex-direction: column;
+        align-items: start;
+        justify-content: start ;
+        margin-top: 100px;
+        padding: 20px;
+    }
+    .services .shipping{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .Services h3{
+        font-size: 30px;
+    }
+    .Services p{
+        font-size: 18px;
+    }
+    .Services img{
+        height: 80px;
+        width: 80px;
+    }
+}

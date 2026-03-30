@@ -9,6 +9,7 @@ import  paypal from '../../assets/Images/Payment/paypal.jpg'
 import amex from '../../assets/Images/Payment/american-express.jpg'
 import discover from '../../assets/Images/Payment/discover.jpg'
 import { useNavigate } from "react-router-dom";
+import '../Components/CartSideBar/cart.css'
 
 const Cart = () => {
 
@@ -40,14 +41,14 @@ const Cart = () => {
         </Link>
       </div>
 
-      <div className="Wislist h-auto max-h-[100vh] max-w-[1200px] mx-auto">
+      <div className="cart-content h-auto max-h-[100vh] max-w-[1200px] mx-auto px-4 lg:px-0">
         {cart.length === 0 ? (
-          <div>
-            <p className="text-gray-500 text-center">Your cart is empty</p>
+          <div className="empty-cart text-center py-8">
+            <p className="text-gray-500 text-center mb-4">Your cart is empty</p>
             <div className="btn">
               <Link
                 to="/categories"
-                className="text-right flex items-center justify-end border px-5 py-3 mt-2 text-sm font-bold gap-2"
+                className="continue-shopping-btn text-right flex items-center justify-end border px-5 py-3 mt-2 text-sm font-bold gap-2 mx-auto w-fit"
               >
                 Continue Shopping <MdArrowOutward />
               </Link>
@@ -57,10 +58,10 @@ const Cart = () => {
           <>
             {/* TABLE HEADER */}
 
-            <div className="grid grid-cols-5 border-b pb-4 font-medium text-gray-700">
+            <div className="table-header hidden md:grid grid-cols-5 border-b pb-4 font-medium text-gray-700">
               <p className="text-left">Item</p>
               <p className="text-right">Price</p>
-              <p className="text-center">Add</p>
+              <p className="text-center">Quantity</p>
               <p className="text-center">Total</p>
               <p className="text-center">Remove</p>
             </div>
@@ -70,81 +71,80 @@ const Cart = () => {
             {cart.map((item) => (
               <div
                 key={item.cart_id}
-                className="grid grid-cols-5  items-center border-b py-6"
+                className="cart-item border-b py-6 md:grid md:grid-cols-5 md:items-center"
               >
                 {/* PRODUCT */}
 
-                <div className="flex items-center gap-4">
+                <div className="product-info flex items-center gap-4 mb-4 md:mb-0">
                   <img
                     src={`http://localhost:5000/uploads/${item.thumbnail}`}
-                    className="w-30 h-30 object-cover bg-gray-100"
+                    className="w-20 h-20 md:w-30 md:h-30 object-cover bg-gray-100"
                   />
 
-                  <h3 className="font-medium text-xl">{item.product_name}</h3>
+                  <h3 className="font-medium text-lg md:text-xl">{item.product_name}</h3>
                 </div>
 
                 {/* PRICE */}
 
-                <p className="text-right">${item.discount_price}</p>
+                <p className="price text-right md:col-start-2">${item.discount_price}</p>
 
-                {/* ADD TO CART */}
+                {/* QUANTITY SELECTOR */}
 
-                <button className=" mx-20">
-                  <div className="flex items-center justify-between px-2 w-25 py-1 border border-gray-200 bg-gray-100  text-xl ">
+                <div className="quantity-selector mx-auto md:mx-20 mb-4 md:mb-0">
+                  <div className="flex items-center justify-between px-2 w-32 md:w-25 py-1 border border-gray-200 bg-gray-100 text-xl">
                     <button
                       onClick={() =>
-                        updateQty(item.cart_id, (item.qty || 1) - 1)
+                        updateQty(item.cart_id, Math.max(1, (item.qty || 1) - 1))
                       }
-                      className=""
+                      className="px-2 hover:text-[#CB927A]"
                     >
                       -
                     </button>
 
-                    <span className="font-normal' text-lg ">{item.qty}</span>
+                    <span className="font-normal text-lg px-2">{item.qty || 1}</span>
 
                     <button
                       onClick={() =>
                         updateQty(item.cart_id, (item.qty || 1) + 1)
                       }
-                      className=""
+                      className="px-2 hover:text-[#CB927A]"
                     >
                       +
                     </button>
                   </div>
-                </button>
+                </div>
 
                 {/* TOTAL */}
 
-                <p className="text-center">
-                  {" "}
+                <p className="total text-center md:col-start-4">
                   ${item.discount_price * (item.qty || 1)}
                 </p>
 
                 {/* REMOVE */}
 
                 <button
-                  onClick={() => removeWishlist(item.cart_id)}
-                  className="flex items-center gap-2 text-red-500 mx-20"
+                  onClick={() => removeCart(item.cart_id)}
+                  className="remove-btn flex items-center gap-2 text-red-500 md:mx-20 justify-center md:justify-start"
                 >
                   <FiTrash2 />
-                  Delete
+                  <span className="hidden md:inline">Delete</span>
                 </button>
               </div>
             ))}
 
             <Link
               to="/categories"
-              className="text-right flex items-center justify-end"
+              className="continue-shopping-link text-right flex items-center justify-end mt-6"
             >
-              Continue Shopping Cart <MdArrowOutward />
+              Continue Shopping <MdArrowOutward />
             </Link>
 
             {/* CLEAR ALL BUTTON */}
 
-            <div className="mt-8">
+            <div className="mt-8 text-center md:text-left">
               <button
                 onClick={clearAll}
-                className="border px-6 py-2 hover:bg-gray-100"
+                className="clear-all-btn border px-6 py-2 hover:bg-gray-100 w-full md:w-auto"
               >
                 Clear All Cart
               </button>
@@ -153,40 +153,52 @@ const Cart = () => {
         )}
 
         {/* Order Summary */}
-        <div className="Order-Summary flex flex-col p-10 gap-2 absolute right-50 w-122 bg-gray-100">
-          <h3 className="text-xl">Order Summary</h3>
-          <div className="total flex flex-row items-center gap-20">
-          <p className="text-sm text-gray-500">Total </p><span className="absolute right-4 text-sm text-gray-500">{cart.length} items</span>
+        <div className="order-summary mt-8 md:mt-0 md:fixed md:right-8 md:top-40 w-full md:w-96 lg:w-122 bg-gray-100 p-6 lg:p-10">
+          <h3 className="text-xl font-semibold mb-4">Order Summary</h3>
+          
+          <div className="space-y-3">
+            <div className="flex justify-between items-center">
+              <p className="text-sm text-gray-500">Total Items</p>
+              <span className="text-sm text-gray-500">{cart.length} items</span>
+            </div>
+
+            <div className="flex justify-between items-center">
+              <p className="text-sm text-gray-500">SubTotal</p>
+              <span className="text-sm font-medium">${total}.00</span>
+            </div>
+
+            <div className="flex justify-between items-center">
+              <p className="text-sm text-gray-500">Shipping</p>
+              <span className="text-sm text-gray-500">$0.00</span>
+            </div>
+
+            <div className="flex justify-between items-center pt-2 border-t border-gray-300">
+              <p className="text-sm font-semibold">Payable Total</p>
+              <span className="text-sm font-bold text-lg">${total}.00</span>
+            </div>
           </div>
 
-         <div className="total flex flex-row items-center gap-20">
-          <p className="text-sm text-gray-500">SubTotal </p><span className="absolute right-4 text-sm ">${total}.00</span>
-          </div> 
+          <button 
+            onClick={()=>{navigate('/checkout')}} 
+            className="w-full mt-6 py-3 border bg-[#CB927A] text-white cursor-pointer hover:bg-[#B8826A] transition-colors"
+          >
+            Proceed To Checkout
+          </button>
 
-          <div className="total flex flex-row items-center gap-20">
-          <p className="text-sm text-gray-500">Shipping</p><span className="absolute right-4 text-sm text-gray-500">$0.00</span>
+          <div className="flex flex-row gap-2 mt-4 text-xs">
+            <input type="checkbox" className="mt-0.5" />
+            <span>I accept to the <span className="text-[#CB927A]">Terms & Conditions</span> and <span className="text-[#CB927A]">Privacy Policy</span></span>
           </div>
 
-          <div className="total flex flex-row items-center gap-20">
-          <p className="text-sm text-gray-500">payble total</p><span className="absolute right-4 text-sm ">${total}.00</span>
+          <h3 className="text-xl py-4 mt-4 border-t border-gray-300">Accepted Payment Methods</h3>
+
+          <div className="payment-methods flex flex-wrap gap-3">
+            <img src={maestro} className="h-6" alt="Maestro" />
+            <img src={visa} className="h-6" alt="Visa" />
+            <img src={paypal} className="h-6" alt="PayPal" />
+            <img src={amex} className="h-6" alt="American Express" />
+            <img src={discover} className="h-6" alt="Discover" />
           </div>
-
-          <button onClick={()=>{navigate('/checkout')}} className="py-3 border bg-[#CB927A] text-white cursor-pointer">Proceed To CheckOut</button>
-
-
-<div className="flex flex-row gap-2">
-          <input type="checkbox" />I accept to the <span className="text-[#CB927A]">Terms & Conditions</span>and<span className="text-[#CB927A]">Privacy Policy</span>
-</div>
-
-<h3 className="text-xl py-2">Accepted payment method</h3>
-
- <div className="payment-methods flex flex-row gap-3">
-            <img src={maestro}  className="h-6"/>
-            <img src={visa}  className="h-6"/>
-            <img src={paypal}  className="h-6"/>
-            <img src={amex}  className="h-6"/>
-            <img src={discover}  className="h-6"/>
-    </div>
         </div>
       </div>
     </section>

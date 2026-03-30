@@ -29,3 +29,58 @@
     width: 100%;
     transform: translateY(4px);
 }
+
+
+@media (max-width:768px) {
+    .Explore-Collection{
+        padding: 10px;
+        height: auto;
+        width: 100%;
+        margin-top: 50px;
+    }
+    .Explore-Collection h3{
+        font-size: 26px;
+        margin-top: 20px;
+    }
+    .Explore-Collection .explore-section{
+        height: auto;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .left-collection{
+        height: auto;
+        width: 100%;
+        padding: 10px;
+    }
+    .right-collection{
+        height: auto;
+        width: 100%;
+    }
+    .right-collection img{
+        position: relative;
+    }
+    .right-collection .content{
+     position: absolute;
+     bottom: 10px;
+     left: 160px;
+     width: 200px;
+     gap: 2px;
+     height: 100px;
+     padding: 2px;
+    }
+}
+/* Bottom Card */
+@media (max-width:768px) {
+    .bottom-card{
+        display: flex;
+        flex-direction: column;
+        max-width: 400px;
+        padding: 10px;
+        margin: 0px;
+    }
+    .bottom-card .img-container{
+        width: 100%;
+    }
+}

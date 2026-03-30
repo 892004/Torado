@@ -1,4 +1,4 @@
-import React ,{useState}from "react";
+import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -10,10 +10,10 @@ import collection2 from "../../../../src/assets/Images/collections/collection-2.
 import collection3 from "../../../../src/assets/Images/collections/collection-3.jpg";
 import collection4 from "../../../../src/assets/Images/collections/collection-4.jpg";
 import collection5 from "../../../../src/assets/Images/collections/collection-5.jpg";
-import '../NewCollection/newcollection.css'
+import "../NewCollection/newcollection.css";
 import { GoArrowLeft } from "react-icons/go";
 import { GoArrowRight } from "react-icons/go";
-
+import "../NewCollection/newcollection.css";
 
 const card = [
   {
@@ -46,24 +46,33 @@ const card = [
     heading: "Accessories",
     button: "Shop Now",
   },
-];  
+];
 const NewCollection = () => {
-    const [swiperRef, setSwiperRef] = useState(null);
+  const [swiperRef, setSwiperRef] = useState(null);
   return (
-     <section className="New-collection h-auto min-h-screen w-full flex flex-col items-center gap-10 justify-center relative">
-      <h3 className="mb-8 text-5xl font-bold text-[#2A2826]">
-        New Collection
-      </h3>
+    <section className="New-collection h-auto min-h-screen w-full flex flex-col items-center gap-10 justify-center relative">
+      <h3 className="mb-8 text-5xl font-bold text-[#2A2826]">New Collection</h3>
 
       <Swiper
-        slidesPerView={3}
+        slidesPerView={1}
+        spaceBetween={10} // 👈 default (mobile)
         speed={2000}
         loop={true}
-        onSwiper={setSwiperRef}   
+        onSwiper={setSwiperRef}
         modules={[Navigation]}
         grabCursor={true}
-        simulateTouch={true}     // 👈 desktop drag enable
-  allowTouchMove={true} 
+        simulateTouch={true}
+        allowTouchMove={true}
+        breakpoints={{
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+        }}
         className="w-[87%] p-10"
       >
         {card.map((elem) => (
@@ -77,22 +86,22 @@ const NewCollection = () => {
         ))}
       </Swiper>
 
-   <div className="navigate-button flex flex-row absolute z-50 top-100  items-center justify-between gap-320 ">
-          <button 
-            onClick={() => swiperRef?.slidePrev()}   
-            className="border bg-white border-[#CB927A] rounded-full px-4 py-4  cursor-pointer text-[#CB927A]"
-          >
-            <GoArrowLeft className="text-[18px] font-medium" />
-          </button>
-          <button
-            onClick={() => swiperRef?.slideNext()}
-            className="border bg-white  border-[#CB927A] rounded-full px-4 py-4 cursor-pointer text-[#CB927A]"
-          >
-            <GoArrowRight className="text-[18px] font-medium" />
-          </button>
-    </div>
-</section>
-  )
+      <div className="navigate-button flex flex-row absolute z-50 top-100  items-center justify-between gap-320 ">
+        <button
+          onClick={() => swiperRef?.slidePrev()}
+          className="border bg-white border-[#CB927A] rounded-full px-4 py-4  cursor-pointer text-[#CB927A]"
+        >
+          <GoArrowLeft className="text-[18px] font-medium" />
+        </button>
+        <button
+          onClick={() => swiperRef?.slideNext()}
+          className="border bg-white  border-[#CB927A] rounded-full px-4 py-4 cursor-pointer text-[#CB927A]"
+        >
+          <GoArrowRight className="text-[18px] font-medium" />
+        </button>
+      </div>
+    </section>
+  );
 };
 
 export default NewCollection;

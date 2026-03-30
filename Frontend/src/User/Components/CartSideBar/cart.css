@@ -1,0 +1,191 @@
+/* Cart Component Responsive Styles */
+
+/* Base styles */
+.cart-content {
+    position: relative;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .cart-content {
+        padding: 0 1rem;
+    }
+
+    .cart-item {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .product-info {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+
+    .product-info img {
+        width: 80px !important;
+        height: 80px !important;
+        margin: 0 auto;
+    }
+
+    .price {
+        text-align: center;
+        font-size: 1.1rem;
+        font-weight: 600;
+        order: 2;
+    }
+
+    .total {
+        text-align: center;
+        font-size: 1.1rem;
+        font-weight: 600;
+        order: 4;
+    }
+
+    .quantity-selector {
+        order: 3;
+    }
+
+    .quantity-selector > div {
+        width: 120px !important;
+        margin: 0 auto;
+    }
+
+    .remove-btn {
+        justify-content: center;
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #ef4444;
+        border-radius: 0.375rem;
+        transition: all 0.3s ease;
+        order: 5;
+    }
+
+    .remove-btn:hover {
+        background-color: #fef2f2;
+    }
+
+    .continue-shopping-btn {
+        width: 100%;
+        justify-content: center;
+        margin-top: 1rem;
+    }
+
+    .continue-shopping-link {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .clear-all-btn {
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    .empty-cart {
+        padding: 2rem 1rem;
+    }
+
+    .order-summary {
+        margin-top: 2rem !important;
+        position: static !important;
+        width: 100% !important;
+    }
+
+    .order-summary h3 {
+        font-size: 1.25rem;
+    }
+
+    .order-summary .space-y-3 > div {
+        padding: 0.5rem 0;
+    }
+
+    .order-summary button {
+        font-size: 0.9rem;
+        padding: 0.75rem;
+    }
+
+    .payment-methods {
+        justify-content: center;
+    }
+
+    .payment-methods img {
+        height: 20px !important;
+    }
+}
+
+/* Tablet Styles */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .cart-content {
+        padding: 0 2rem;
+    }
+
+    .order-summary {
+        width: 320px !important;
+        right: 1rem !important;
+    }
+
+    .product-info img {
+        width: 100px !important;
+        height: 100px !important;
+    }
+}
+
+/* Large Desktop Styles */
+@media (min-width: 1025px) {
+    .cart-content {
+        padding: 0 4rem;
+    }
+
+    .order-summary {
+        width: 488px !important; /* 122 * 4px = 488px */
+    }
+}
+
+/* Hover effects and transitions */
+.remove-btn:hover {
+    background-color: #fef2f2;
+}
+
+.clear-all-btn:hover {
+    background-color: #f3f4f6;
+}
+
+.continue-shopping-btn:hover {
+    background-color: #CC9078;
+    color: white;
+    transition: 0.5s;
+}
+
+/* Quantity selector improvements */
+.quantity-selector button {
+    transition: color 0.2s ease;
+}
+
+.quantity-selector button:hover {
+    color: #CB927A;
+}
+
+/* Order summary button hover effect */
+.order-summary button:hover {
+    background-color: #B8826A;
+    transition: background-color 0.3s ease;
+}
+
+/* Accessibility improvements */
+.quantity-selector button:focus,
+.remove-btn:focus,
+.clear-all-btn:focus,
+.order-summary button:focus {
+    outline: 2px solid #CB927A;
+    outline-offset: 2px;
+}
+
+/* Payment method images */
+.payment-methods img {
+    transition: transform 0.2s ease;
+}
+
+.payment-methods img:hover {
+    transform: scale(1.1);
+}

@@ -8,6 +8,7 @@ import paypal from "../../assets/Images/Payment/paypal.jpg";
 import amex from "../../assets/Images/Payment/american-express.jpg";
 import discover from "../../assets/Images/Payment/discover.jpg";
 import axios from "axios";
+import '../Components/checkout.css'
 
 const CheckoutPage = () => {
   const { cart } = useCartlist();
@@ -151,13 +152,13 @@ const CheckoutPage = () => {
     }
   };
   return (
-    <div className="min-h-screen mt-50">
+    <div className="checkout-container min-h-screen mt-20 md:mt-50">
       {/* HEADER */}
 
-      <div className="py-12 flex flex-col items-center justify-center gap-2">
-        <h3 className="text-5xl">Checkout</h3>
+      <div className="checkout-header py-8 md:py-12 flex flex-col items-center justify-center gap-2 px-4">
+        <h3 className="text-3xl md:text-5xl text-center">Checkout</h3>
 
-        <div className="links flex flex-row text-center gap-1">
+        <div className="checkout-links links flex flex-row text-center gap-1 text-sm md:text-base flex-wrap justify-center">
           <Link to="/" className="text-gray-600">
             Home /
           </Link>
@@ -172,15 +173,15 @@ const CheckoutPage = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 lg:grid-cols-3 gap-10">
+      <div className="checkout-form max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12 grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10">
         {/* LEFT SIDE */}
 
         <div className="lg:col-span-2 space-y-10">
           <form onSubmit={(e) => e.preventDefault()}>
-            <div>
-              <h3 className="text-5xl mb-4">Contact Information</h3>
+            <div className="form-section">
+              <h3 className="text-2xl md:text-4xl mb-4">Contact Information</h3>
 
-              <label>Email or Phone Number</label>
+              <label className="form-label block mb-2 text-sm md:text-base">Email or Phone Number</label>
 
               <input
                 type="email"
@@ -188,34 +189,34 @@ const CheckoutPage = () => {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="gillies@torado.com"
-                className="w-full border border-gray-300 p-3 rounded outline-none"
+                className="form-input w-full border border-gray-300 p-3 rounded-lg outline-none focus:border-[#CB927A] transition-colors"
               />
             </div>
 
             {/* SHIPPING ADDRESS */}
 
-            <div className="flex flex-col p-2">
-              <h3 className="text-5xl mb-6">Shipping Address</h3>
+            <div className="form-section flex flex-col p-2">
+              <h3 className="text-2xl md:text-4xl mb-6">Shipping Address</h3>
 
               {/* COUNTRY */}
 
               <div className="flex flex-col relative">
-                <label>Country</label>
+                <label className="form-label block mb-2 text-sm md:text-base">Country</label>
 
                 <input
                   type="text"
                   value={search}
                   onChange={(e) => handleSearch(e.target.value)}
                   placeholder="Search country..."
-                  className="p-3 mt-1 border border-gray-300 rounded-xl"
+                  className="form-input p-3 mt-1 border border-gray-300 rounded-lg focus:border-[#CB927A] transition-colors"
                 />
 
                 {search && (
-                  <div className="absolute top-16 w-full bg-white max-h-60 overflow-y-auto shadow-lg z-10">
+                  <div className="dropdown-list absolute top-20 md:top-16 w-full bg-white max-h-60 overflow-y-auto shadow-lg z-10 border border-gray-200 rounded-lg">
                     {filteredCountries.map((country, index) => (
                       <div
                         key={index}
-                        className="p-2 hover:bg-gray-100 cursor-pointer"
+                        className="dropdown-item p-3 hover:bg-gray-100 cursor-pointer border-b border-gray-100 last:border-b-0"
                         onClick={() => handleCountrySelect(country.name.common)}
                       >
                         {country.name.common}
@@ -227,29 +228,29 @@ const CheckoutPage = () => {
 
               {/* FIRST NAME + LAST NAME */}
 
-              <div className="flex flex-row items-center gap-8 mt-3">
-                <div className="flex flex-col">
-                  <label>First Name</label>
+              <div className="form-row flex flex-col md:flex-row md:items-center gap-4 md:gap-8 mt-4">
+                <div className="form-col flex flex-col flex-1">
+                  <label className="form-label block mb-2 text-sm md:text-base">First Name</label>
 
                   <input
                     type="text"
                     name="first_name"
                     value={formData.first_name}
                     onChange={handleChange}
-                    className="p-3 mt-1 w-[380px] border border-gray-300 rounded-xl"
+                    className="form-input p-3 mt-1 w-full border border-gray-300 rounded-lg focus:border-[#CB927A] transition-colors"
                     placeholder="Thomas"
                   />
                 </div>
 
-                <div className="flex flex-col">
-                  <label>Last Name</label>
+                <div className="form-col flex flex-col flex-1">
+                  <label className="form-label block mb-2 text-sm md:text-base">Last Name</label>
 
                   <input
                     type="text"
                     name="last_name"
                     onChange={handleChange}
                     value={formData.last_name}
-                    className="p-3 mt-1 w-[380px] border border-gray-300 rounded-xl"
+                    className="form-input p-3 mt-1 w-full border border-gray-300 rounded-lg focus:border-[#CB927A] transition-colors"
                     placeholder="Gillies"
                   />
                 </div>
@@ -257,30 +258,30 @@ const CheckoutPage = () => {
 
               {/* ADDRESS */}
 
-              <div className="flex flex-col mt-3">
-                <label>Address</label>
+              <div className="flex flex-col mt-4">
+                <label className="form-label block mb-2 text-sm md:text-base">Address</label>
 
                 <input
                   type="text"
                   name="address"
                   onChange={handleChange}
                   value={formData.address}
-                  className="p-3 border border-gray-300 rounded-xl"
+                  className="form-input p-3 border border-gray-300 rounded-lg focus:border-[#CB927A] transition-colors"
                   placeholder="94 East 84th Street , New York"
                 />
               </div>
 
               {/* state */}
 
-              <div className="flex flex-row mt-3 items-center gap-8">
-                <div className="flex flex-col">
-                  <label>State</label>
+              <div className="form-row flex flex-col md:flex-row md:items-center gap-4 md:gap-8 mt-4">
+                <div className="form-col flex flex-col flex-1">
+                  <label className="form-label block mb-2 text-sm md:text-base">State</label>
 
                   <select
                     value={selectedState}
                     name="state"
                     onChange={(e) => handleStateSelect(e.target.value)}
-                    className="p-3 border border-gray-300 rounded-xl w-[380px]"
+                    className="form-select p-3 border border-gray-300 rounded-lg focus:border-[#CB927A] transition-colors w-full"
                   >
                     <option value="">Select State</option>
 
@@ -292,17 +293,15 @@ const CheckoutPage = () => {
                   </select>
                 </div>
 
-                {/* POSTAL CODE */}
-
-                <div className="flex flex-col">
-                  <label>Postal Code</label>
+                <div className="form-col flex flex-col flex-1">
+                  <label className="form-label block mb-2 text-sm md:text-base">Postal Code</label>
 
                   <input
                     type="text"
                     name="postal_code"
                     onChange={handleChange}
                     value={formData.postal_code}
-                    className="w-[380px] border border-gray-300 p-3 rounded-xl"
+                    className="form-input w-full border border-gray-300 p-3 rounded-lg focus:border-[#CB927A] transition-colors"
                     placeholder="****"
                   />
                 </div>
@@ -310,9 +309,9 @@ const CheckoutPage = () => {
 
               {/* city */}
 
-              <div className="flex flex-row items-center gap-8 mt-3">
-                <div className="flex flex-col relative">
-                  <label>City</label>
+              <div className="form-row flex flex-col md:flex-row md:items-center gap-4 md:gap-8 mt-4">
+                <div className="form-col flex flex-col flex-1 relative">
+                  <label className="form-label block mb-2 text-sm md:text-base">City</label>
 
                   <input
                     type="text"
@@ -320,15 +319,15 @@ const CheckoutPage = () => {
                     value={citySearch}
                     onChange={(e) => handleCitySearch(e.target.value)}
                     placeholder="Search city..."
-                    className="p-3 mt-1 w-[380px] border border-gray-300 rounded-xl"
+                    className="form-input p-3 mt-1 w-full border border-gray-300 rounded-lg focus:border-[#CB927A] transition-colors"
                   />
 
                   {citySearch && (
-                    <div className="absolute top-16 w-full bg-white max-h-60 overflow-y-auto shadow-lg z-10">
+                    <div className="dropdown-list absolute top-20 md:top-16 w-full bg-white max-h-60 overflow-y-auto shadow-lg z-10 border border-gray-200 rounded-lg">
                       {filteredCities.map((city, index) => (
                         <div
                           key={index}
-                          className="p-2 hover:bg-gray-100 cursor-pointer"
+                          className="dropdown-item p-3 hover:bg-gray-100 cursor-pointer border-b border-gray-100 last:border-b-0"
                           onClick={() => {
                             setSelectedCity(city);
                             setCitySearch(city);
@@ -347,51 +346,56 @@ const CheckoutPage = () => {
                   )}
                 </div>
 
-                <div className="flex flex-col">
-                  <label>Street</label>
+                <div className="form-col flex flex-col flex-1">
+                  <label className="form-label block mb-2 text-sm md:text-base">Street</label>
 
                   <input
                     type="text"
                     name="street"
                     onChange={handleChange}
-                    className="p-3 mt-1 w-[380px] border border-gray-300 rounded-xl"
+                    className="form-input p-3 mt-1 w-full border border-gray-300 rounded-lg focus:border-[#CB927A] transition-colors"
                     placeholder="Street"
                   />
                 </div>
               </div>
-              <div className="flex flex-col mt-3">
-                <label>Phone</label>
+              <div className="flex flex-col mt-4">
+                <label className="form-label block mb-2 text-sm md:text-base">Phone</label>
 
                 <input
-                  type="phone"
+                  type="tel"
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="p-3 border border-gray-300 rounded-xl"
+                  className="form-input p-3 border border-gray-300 rounded-lg focus:border-[#CB927A] transition-colors"
                   placeholder="+91 1234567890"
                 />
               </div>
 
-              <p className="p-2 flex items-center gap-2 text-gray-500 ">
-                <input type="checkbox" className="cursor-pointer h-4 w-4" />
-                Save this information for next time.
-              </p>
+              <div className="p-4 mt-6 space-y-4">
+                <label className="checkbox-label flex items-center gap-3 text-gray-500 cursor-pointer hover:text-gray-700">
+                  <input type="checkbox" className="cursor-pointer h-4 w-4" />
+                  <span className="text-sm md:text-base">Save this information for next time.</span>
+                </label>
 
-              <p className="p-2 flex items-center gap-2 text-gray-500 ">
-                <input type="checkbox" className="cursor-pointer h-4 w-4" />
-                I've read & agree to the{" "}
-                <span className="text-[#CB927A]">
-                  Terms & Conditions
-                </span> and{" "}
-                <span className="text-[#CB927A]">Privacy Policy</span>
-              </p>
+                <label className="checkbox-label flex items-start gap-3 text-gray-500 cursor-pointer hover:text-gray-700">
+                  <input type="checkbox" className="cursor-pointer h-4 w-4 mt-1" />
+                  <span className="text-sm md:text-base">
+                    I've read & agree to the{" "}
+                    <span className="text-[#CB927A]">
+                      Terms & Conditions
+                    </span>{" "}
+                    and{" "}
+                    <span className="text-[#CB927A]">Privacy Policy</span>
+                  </span>
+                </label>
+              </div>
 
-              <div className="order-notes flex flex-col mt-3">
-                <label>Order Notes (Optional) </label>
+              <div className="order-notes flex flex-col mt-6">
+                <label className="form-label block mb-2 text-sm md:text-base">Order Notes (Optional)</label>
                 <textarea
                   cols={4}
-                  rows={6}
-                  className="border border-gray-300 rounded-xl mt-1 py-3 px-2 font-medium"
+                  rows={4}
+                  className="form-textarea border border-gray-300 rounded-lg mt-1 py-3 px-3 font-medium focus:border-[#CB927A] transition-colors resize-none"
                   placeholder="Write your notes here ..."
                 ></textarea>
               </div>
@@ -400,77 +404,91 @@ const CheckoutPage = () => {
         </div>
 
         {/* RIGHT SIDE */}
-        <div className="bg-white p-6 h-fit">
-          <h3 className="text-xl  mb-5">Cart Totals</h3>
+        <div className="order-summary bg-white p-4 md:p-6 h-fit lg:sticky lg:top-24">
+          <h3 className="text-xl md:text-2xl mb-5">Cart Totals</h3>
 
-          <div className="flex justify-between mb-3 text-sm">
-            <span>Total Items</span>
-            <span>{cart.length}</span>
+          <div className="space-y-3">
+            <div className="summary-row flex justify-between items-center">
+              <span className="text-sm md:text-base text-gray-600">Total Items</span>
+              <span className="text-sm md:text-base font-medium">{cart.length}</span>
+            </div>
+
+            <div className="summary-row flex justify-between items-center">
+              <span className="text-sm md:text-base text-gray-600">Subtotal</span>
+              <span className="text-sm md:text-base font-semibold">${subtotal}</span>
+            </div>
+
+            <div className="summary-row flex justify-between items-center">
+              <span className="text-sm md:text-base text-gray-600">Shipping</span>
+              <span className="text-sm md:text-base">$0.00</span>
+            </div>
+
+            <div className="summary-row total flex justify-between items-center">
+              <span className="text-base md:text-lg font-bold">Payable Total</span>
+              <span className="text-base md:text-lg font-bold text-[#CB927A]">${subtotal}</span>
+            </div>
           </div>
 
-          <div className="flex justify-between mb-3 text-sm font-semibold">
-            <span>Subtotal</span>
-            <span>${subtotal}</span>
-          </div>
-
-          <div className="flex justify-between mb-3 text-sm">
-            <span>Shipping</span>
-            <span>$0.00</span>
-          </div>
-
-          <div className="flex justify-between text-sm font-semibold">
-            <span>Payable Total</span>
-            <span>${subtotal}</span>
-          </div>
-
-          <div className="Payment-methods mt-10 text-gray-500 ">
-            <h3 className="text-xl text-black">Payment Method</h3>
-            <div className="flex flex-col mt-5 items-start gap-3">
-              <h3 className="flex flex-row items-center gap-2">
+          <div className="Payment-methods mt-8 text-gray-500">
+            <h3 className="text-xl text-black mb-4">Payment Method</h3>
+            <div className="flex flex-col items-start gap-4">
+              <label className="payment-method-option flex items-start gap-3 cursor-pointer hover:text-gray-700">
                 <input
                   type="radio"
                   name="payment_method"
                   value="Bank_transfer"
                   onChange={handleChange}
-                  className="h-4 w-4"
+                  className="h-4 w-4 mt-1"
                 />
-                Direct Bank Transfer
-              </h3>
-              <span className="text-sm text-gray-500 mb-2">
-                Make your payment directly into our bank account. Please use
-                your order ID as the payment reference.
-              </span>
+                <div>
+                  <span className="text-sm md:text-base font-medium">Direct Bank Transfer</span>
+                  <p className="text-xs md:text-sm text-gray-500 mt-1">
+                    Make your payment directly into our bank account. Please use
+                    your order ID as the payment reference.
+                  </p>
+                </div>
+              </label>
 
+              <label className="payment-method-option flex items-center gap-3 cursor-pointer hover:text-gray-700">
+                <input 
+                  type="radio" 
+                  name="payment_method" 
+                  value="COD" 
+                  onChange={handleChange} 
+                  className="h-4 w-4" 
+                />
+                <span className="text-sm md:text-base font-medium">Cash On Delivery</span>
+              </label>
 
-              <h3 className="flex flex-row items-center gap-2">
-                <input type="radio" name="payment_method" value="COD" onChange={handleChange}  className="h-4 w-4" />
-                Cash On Delivery
-              </h3>
-
-
-              <h3 className="flex flex-row items-center gap-2"> 
-                <input type="radio" name="payment_method" value="check_payment" onChange={handleChange} className="h-4 w-4" />
-                Check Payment
-              </h3>
+              <label className="payment-method-option flex items-center gap-3 cursor-pointer hover:text-gray-700">
+                <input 
+                  type="radio" 
+                  name="payment_method" 
+                  value="check_payment" 
+                  onChange={handleChange} 
+                  className="h-4 w-4" 
+                />
+                <span className="text-sm md:text-base font-medium">Check Payment</span>
+              </label>
             </div>
           </div>
 
           {/* Accepted Payment methods */}
-          <div className="mt-5">
-            <h3 className="text-xl py-2">Accepted payment method</h3>
+          <div className="mt-8">
+            <h3 className="text-lg md:text-xl py-2">Accepted payment methods</h3>
 
-            <div className="payment-methods flex flex-row gap-3">
-              <img src={maestro} className="h-6" />
-              <img src={visa} className="h-6" />
-              <img src={paypal} className="h-6" />
-              <img src={amex} className="h-6" />
-              <img src={discover} className="h-6" />
+            <div className="payment-methods payment-icons flex flex-wrap gap-3">
+              <img src={maestro} className="h-8 md:h-6" alt="Maestro" />
+              <img src={visa} className="h-8 md:h-6" alt="Visa" />
+              <img src={paypal} className="h-8 md:h-6" alt="PayPal" />
+              <img src={amex} className="h-8 md:h-6" alt="American Express" />
+              <img src={discover} className="h-8 md:h-6" alt="Discover" />
             </div>
           </div>
 
           <button
             onClick={placeOrder}
-            className="w-full mt-6 bg-[#c79377] cursor-pointer text-white py-3 rounded"
+            className="place-order-btn w-full mt-6 bg-[#c79377] cursor-pointer text-white py-3 md:py-4 rounded-lg hover:bg-[#B8826A] transition-colors font-semibold text-sm md:text-base"
           >
             Place Order
           </button>

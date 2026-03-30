@@ -1,20 +1,76 @@
-
 .contact-us .Left button::before,
-.contact-us .Left button::after{
-    position: absolute;
-    display: block;
-    content: '';
-    height: 100%;
-    width: 100%;
-    color: #CB927A;
-    background-color: transparent;
-    border: 1px solid #CB927A;
-    right: -5px;
-    bottom: -5px;
+.contact-us .Left button::after {
+  position: absolute;
+  display: block;
+  content: "";
+  height: 100%;
+  width: 100%;
+  color: #cb927a;
+  background-color: transparent;
+  border: 1px solid #cb927a;
+  right: -5px;
+  bottom: -5px;
 }
 
 .contact-us .Left button:hover::before,
-.contact-us .Left button:hover::after{
-    opacity: 0;
-    transition: 0.5s;
-}   
+.contact-us .Left button:hover::after {
+  opacity: 0;
+  transition: 0.5s;
+}
+
+@media (max-width: 768px) {
+  .contact-us {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .contact-us h3 {
+    font-size: 26px;
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    padding: 5px;
+    width: 400px;
+  }
+  .Left h3 {
+    font-size: 20px;
+    width: 200px;
+    padding-left: 10px;
+  }
+  .Left .name {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+  }
+  .Left .phone {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+  }
+  .Left input {
+    width: 300px;
+  }
+  .Left .message {
+    width: 300px;
+  }
+
+  .Left .checkbox input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #cb927a;
+    cursor: pointer;
+  }
+}
+
+/*  Right Section */
+@media (max-width:768px){
+    .right{
+        display: flex;
+        width: 300px;
+    }
+}

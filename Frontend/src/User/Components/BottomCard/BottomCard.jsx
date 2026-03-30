@@ -1,6 +1,7 @@
 import React from "react";
 import collection4 from "../../../assets/Images/collections/collection-4.jpg";
 import collection5 from "../../../assets/Images/collections/collection-5.jpg";
+import '../ExploreCollection/explorecollection.css'
 
 const bottomCard = [
   {
@@ -24,7 +25,7 @@ const BottomCard = () => {
     <section className="bottom-card max-w-[1320px] mx-auto mt-70 flex gap-8">
       {bottomCard.map((elem) => {
         return (
-          <div key={elem.id} className="relative w-1/2 h-[350px] overflow-hidden cursor-pointer ">
+          <div key={elem.id} className="img-container relative w-1/2 h-[350px] overflow-hidden cursor-pointer ">
             
             {/* IMAGE */}
             <img

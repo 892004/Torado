@@ -1,5 +1,6 @@
 import React from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
+import '../AllProducts/MainCategory.css'
 
 const ProductHeader = ({ layout, setlayout }) => {
   const active = "text-[#CB927A]";
@@ -51,4 +52,4 @@ const ProductHeader = ({ layout, setlayout }) => {
   );
 };
 
-export default ProductHeader;
+export default ProductHeader;     

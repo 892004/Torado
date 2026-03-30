@@ -31,3 +31,17 @@
     background-color: black;
     transition: 0.9s;
 }
+
+@media (max-width:768px) {
+    .Blog{
+        margin-top: 250px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .Blog .blog-cards{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}

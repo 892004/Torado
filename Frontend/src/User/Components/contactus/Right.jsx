@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { SlLocationPin } from "react-icons/sl";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { LuPhone } from "react-icons/lu";
+import '../../Components/contactus/contact.css'
 
 const Right = () => {
   return (

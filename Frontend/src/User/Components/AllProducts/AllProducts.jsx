@@ -16,6 +16,7 @@ import "../Filters/filter.css";
 import { useWishlist } from "../../Context/WishlistContext";
 import { useCartlist } from "../../Context/CartContext";
 import { useNavigate } from "react-router-dom";
+import "../AllProducts/MainCategory.css";
 
 const AllProducts = () => {
   const navigate = useNavigate();
@@ -180,9 +181,9 @@ const AllProducts = () => {
   return (
     <section
       ref={productsRef}
-      className="Allproducts w-full min-h-screen py-20"
+      className="AllProducts w-full min-h-screen py-20"
     >
-      <div className="max-w-[1400px] mx-auto w-full ">
+      <div className=" max-w-[1400px] mx-auto w-full ">
         <ProductHeader layout={layout} setlayout={setlayout} />
         <div className="Filters mx-2">
           <button
@@ -211,7 +212,9 @@ const AllProducts = () => {
             </div>
           )}
 
-          <div className={`${showFilters ? "w-[calc(100%-280px)]" : "w-full"}`}>
+          <div
+            className={`filters-dp ${showFilters ? "w-[calc(100%-280px)]" : "w-full"}`}
+          >
             {/* ACTIVE FILTERS */}
 
             {(selectedCategories.length > 0 ||
@@ -318,12 +321,12 @@ const AllProducts = () => {
             {/* Layout 1  */}
             {layout === 1 ? (
               <div
-                className={`flex flex-col gap-10  transition-all duration-500 ${fade ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+                className={`layout1 flex flex-col gap-10  transition-all duration-500 ${fade ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
               >
                 {currentProduct.map((item) => (
                   <div
                     key={item.product_id}
-                    className="flex gap-10 border-b border-gray-300 pb-10"
+                    className="content flex gap-10 border-b border-gray-300 pb-10"
                   >
                     <img
                       src={`http://localhost:5000/uploads/${item.thumbnail}`}
@@ -378,17 +381,15 @@ const AllProducts = () => {
               </div>
             ) : (
               /* GRID VIEW */
-
               <div
-                className={`grid transition-all duration-500 ${fade ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"} ${
-                  layout === 2
-                    ? "grid-cols-2"
-                    : layout === 3
-                      ? "grid-cols-3"
-                      : layout === 4
-                        ? "grid-cols-4"
-                        : "grid-cols-5"
-                } gap-10  mt-10`}
+                className={`main-layout grid transition-all duration-500 
+  ${fade ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"} 
+  grid-cols-1 
+  ${layout === 2 ? "md:grid-cols-2" : ""}
+  ${layout === 3 ? "md:grid-cols-3" : ""}
+  ${layout === 4 ? "md:grid-cols-4" : ""}
+  ${layout === 5 ? "md:grid-cols-5" : ""}
+  gap-10 mt-10`}
               >
                 {currentProduct.map((item) => (
                   <div key={item.product_id} className="group">
@@ -416,9 +417,10 @@ const AllProducts = () => {
                       <div className="absolute right-3 top-3 flex flex-col gap-3">
                         <button
                           onClick={() => toggleWishlist(item.product_id)}
-                          className={`p-4 rounded-full shadow
-  opacity-0 translate-x-5
-  group-hover:opacity-100 group-hover:translate-x-0
+                        className={`p-4 rounded-full shadow
+  opacity-100 translate-x-0
+  md:opacity-0 md:translate-x-5
+  md:group-hover:opacity-100 md:group-hover:translate-x-0
   transition-all duration-500 delay-0
   ${
     isInWishlist(item.product_id)
@@ -431,8 +433,9 @@ const AllProducts = () => {
                         <button
                           onClick={() => toggleCart(item.product_id)}
                           className={`p-4 cursor-pointer rounded-full shadow
-  opacity-0 translate-x-5
-  group-hover:opacity-100 group-hover:translate-x-0
+  opacity-100 translate-x-0
+  md:opacity-0 md:translate-x-5
+  md:group-hover:opacity-100 md:group-hover:translate-x-0
   transition-all duration-500 delay-150
   ${
     isInCart(item.product_id)
@@ -444,10 +447,11 @@ const AllProducts = () => {
                         </button>
 
                         <button
-                          className="bg-white p-4 cursor-pointer rounded-full shadow
-                        opacity-0 translate-x-5
-                        group-hover:opacity-100 group-hover:translate-x-0
-                        transition-all duration-500 delay-300"
+                         className="bg-white p-4 cursor-pointer rounded-full shadow
+  opacity-100 translate-x-0
+  md:opacity-0 md:translate-x-5
+  md:group-hover:opacity-100 md:group-hover:translate-x-0
+  transition-all duration-500 delay-300"
                         >
                           <LuEye />
                         </button>

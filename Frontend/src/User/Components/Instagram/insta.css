@@ -1,5 +1,4 @@
 @media (max-width:768px) {
-
     .Instagram{
         display: flex;
         flex-direction: column;
@@ -7,10 +6,17 @@
         justify-self: start;
         padding: 10px;
         gap: 10px;
+        margin: 0;
+        height: auto;
     }
     .Instagram h3{
+        font-size: 26px;
         font-weight: 600;
-        width: 300px;
+        width: 400px;
         transform: translateX(-20%);
+    }
+    .Instagram img{
+        height: 600px;
+        width: 600px;
     }
 }

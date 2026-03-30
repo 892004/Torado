@@ -1,0 +1,19 @@
+@media (max-width:768px) {
+  .Terms-condition{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+    padding: 20px;
+  }   
+  .Terms-condition h3{
+    font-size:18px;
+  }
+
+    .Terms-condition .main-content{
+        width: 720px;
+        margin-left: 40px;
+        font-size: 14px;
+    }
+}

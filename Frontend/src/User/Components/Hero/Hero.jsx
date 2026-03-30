@@ -65,7 +65,8 @@ const Hero = () => {
         className="h-full w-full object-cover"
       />
 
-      <div className="left-side h-[100vh] w-1/2  absolute top-0 flex items-center justify-start px-3 mt-2 text-xl  ">
+      <div className="hero-section h-auto w-full flex flex-row items-center ">
+      <div className="left-side h-auto w-1/2  absolute top-0 flex items-center justify-start px-3 mt-2 text-xl  ">
         <div className="content flex flex-col items-start gap-5 absolute top-50">
           <p className="text-[20px] text-[#CB927A]">
             {currentSlide.smallHeading}
@@ -82,28 +83,29 @@ const Hero = () => {
 
       </div>
 
-      <div className="right-side h-[100vh] w-1/2 absolute top-0   right-0 flex items-center justify-center">
+      <div className="right-side auto w-1/2 absolute top-0   right-0 flex items-center justify-center">
         <img
           src={currentSlide.img}
           className={`h-180 absolute top-18 object-cover transition-opacity duration-500 ${
             fade ? "opacity-100" : "opacity-0"
           }`}
-        />
+          />
         <div className="navigate-button flex flex-col absolute right-0 top-80 mx-10 gap-2 ">
           <button
             onClick={prevSlide}
             className="border border-[#CB927A] rounded-full px-3 py-3 cursor-pointer text-[#CB927A]"
-          >
+            >
             <GoArrowLeft className="text-[18px] font-medium" />
           </button>
           <button
             onClick={nextSlide}
             className="border  border-[#CB927A] rounded-full px-3 py-3 cursor-pointer text-[#CB927A]"
-          >
+            >
             <GoArrowRight className="text-[18px] font-medium" />
           </button>
         </div>
       </div>
+  </div>
     </section>
   );
 };

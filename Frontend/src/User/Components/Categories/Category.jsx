@@ -15,7 +15,7 @@ const Category = () => {
         Know More About Us <MdArrowOutward />
       </button>
 
-      <div className="flex flex-row h-auto min-h-[100vh] w-full p-8">
+     <div className="section flex flex-row h-[100vh] w-[100%] p-8 items-stretch">
         <Leftsection />
         <RightSection />
       </div>

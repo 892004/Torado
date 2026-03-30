@@ -40,7 +40,7 @@ const ExploreCollection = () => {
   return (
     <section className="Explore-Collection h-screen w-full p-10">
         <h3 className='text-5xl font-bold text-[#2A2826] pb-10 px-3'>Explore Collection</h3>
-        <div className='h-full w-full flex'>
+        <div className='explore-section h-full w-full flex'>
         <LeftCollection cards={ExploreCards}/>
         <RightCollection />
         </div> 

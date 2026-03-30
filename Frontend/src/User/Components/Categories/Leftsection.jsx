@@ -4,7 +4,7 @@ import "../Categories/category.css";
 
 const Leftsection = () => {
   return (
-    <section className="left flex-1 h-auto ">
+    <section className="category-left flex-1 h-full ">
        <img src={CategoryBg} className='h-full w-full object-cover'/>
     </section>
   )

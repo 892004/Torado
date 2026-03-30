@@ -31,3 +31,50 @@
   text-align:center;
   pointer-events:none;
 }
+
+@media (max-width:768px) {
+  .featured-products{
+    display: flex;
+    align-items: start;
+    transform: translateY(-20%);
+    padding: 2px;
+    margin-top: 20px;
+  }
+  .featured-products h3{
+    font-size: 30px;
+    padding-left: 15px;
+  }
+ .feature-card{
+    width: 400px;
+    max-width: 400px;
+    margin: 0 auto;
+    height: 700px;
+  }
+  .feature-card img{
+    height: 400px;
+    width: 1005;
+     transform: scale(100%);
+    }
+ 
+  .featured-content p{
+    font-size: 30px;
+    position: absolute;
+    bottom: 35%;
+  }
+  .featured-content h3{
+    position: absolute;
+    bottom: 30%;
+    font-size: 24px;
+    padding: 0px;
+  }
+  .featured-content p1{
+    font-size: 22px;
+    position: absolute;
+    bottom: 25%;
+  }
+  .navigate-button{
+    position: absolute;
+    bottom: 8%;
+    left: 20%;
+  }
+}

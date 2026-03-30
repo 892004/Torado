@@ -15,7 +15,7 @@ const Blog = () => {
         <Link to = '/' className='opacity-80'> Home  /</Link><span className='text-[#CC9078]'>Blog</span>
         </div>
 
-        <div className="grid grid-cols-3 items-center justify-center gap-20 py-10 ">
+        <div className="blog-cards grid grid-cols-3 items-center justify-center gap-20 py-10 ">
     {BlogData.map((item)=>(
         <div className=" blog-card flex flex-col items-start relative gap-2">
             <img src={item.img} alt="blog.img" className='h-120 w-100 scale-100'/>

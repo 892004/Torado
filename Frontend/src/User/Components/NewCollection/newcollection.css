@@ -1,0 +1,13 @@
+@media (max-width:768px) {
+    .New-collection {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .navigate-button{
+        gap: 100px;
+        position: absolute;
+        bottom: 0;
+        transform: translateY(50%);
+    }
+}

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { SlLocationPin } from "react-icons/sl";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { LuPhone } from "react-icons/lu";
+import '../Components/RefundPolicy/refund.css'
 
 
 
@@ -96,7 +97,8 @@ const RefundPolicy = () => {
           molestie malesuada.
         </p>{" "}
         <br />
-        <p className='flex flex-row items-start gap-10'> <span className='flex items-center justify-center gap-2 opacity-80'> <SlLocationPin className='text-[#CC9078] opcity-100'/>
+
+        <p className=' address flex flex-row items-start gap-10'> <span className='flex items-center justify-center gap-2 opacity-80'> <SlLocationPin className='text-[#CC9078] opcity-100'/>
 94 East 84th Street, 9th Floor, New York, GA 30030</span>
 <span className='flex items-center justify-center gap-2 opacity-80 '><MdOutlineMailOutline className='text-[#CC9078] opcity-100'/>support@torado.com</span>
 <span className='flex items-center justify-center gap-2 opacity-80'><LuPhone className='text-[#CC9078] opcity-100'/>+01 947 847 4488</span>  </p>

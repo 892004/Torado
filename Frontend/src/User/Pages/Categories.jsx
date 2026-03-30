@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import AllProducts from "../Components/AllProducts/AllProducts";
 import CategorySlider from "../Components/Category-Slider/CategorySlider";
 import Signup from '../Components/Signup/Signup'
+import '../Components/AllProducts/MainCategory.css'
 const Category = () => {
   return (
     <section className="Categories w-full flex flex-col items-center  py-50">
@@ -21,7 +22,7 @@ const Category = () => {
 
       <CategorySlider />
       <AllProducts />
-  
+
     </section>
   );
 };

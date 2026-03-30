@@ -1,42 +1,120 @@
-.Category button::after{
-    position: absolute;
-    display: block;
-    content: '';
-    height: 0.2px;
-    width: 0%;
-    background-color: black;
-    bottom: 0;
+.Category button::after {
+  position: absolute;
+  display: block;
+  content: "";
+  height: 0.2px;
+  width: 0%;
+  background-color: black;
+  bottom: 0;
 }
-.Category button:hover::after{
+.Category button:hover::after {
+  width: 100%;
+  transition: 0.5s;
+}
+
+.category-Right .category-box li {
+  font-family: "Prata", serif;
+  font-size: 26px;
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  gap: 10px;
+  position: relative;
+  cursor: pointer;
+}
+
+.category-Right .category-box li::after {
+  position: absolute;
+  display: block;
+  content: "";
+  height: 0.5px;
+  width: 600px;
+  background-color: black;
+  bottom: 0;
+  opacity: 0.19;
+}
+
+.category-Right .category-box span {
+  font-family: "Outfit", sans-serif;
+  font-size: 15px;
+  color: #cb927a;
+}
+
+@media (max-width: 768px) {
+  .Category {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .Category h3 {
+    font-size: 30px;
+    line-height: 2;
+  }
+
+  .Category .section {
+    height: 60vh;
     width: 100%;
-    transition: 0.5s;
-}
-
-.Right .category-box li{
-      font-family: "Prata", serif;
-      font-size: 26px;
-      display: flex;
-      align-items: start;
-      justify-content: start;
-      gap: 10px;
-      position: relative;
-      cursor: pointer;
-}
-
-
-.Right .category-box li::after{
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: start;
+    padding: 0;
+  }
+  .category-left {
+    height: 100%;
+    width: 70%;
+    position: relative;
+  }
+  .category-left img {
+    width: 70%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .category-Right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
     position: absolute;
-    display: block;
-    content: '';
-    height: 0.5px;
-    width: 600px;
-    background-color: black;
-    bottom: 0;
-    opacity:0.19;
-}
+  }
+  .category-Right .heading{
+    line-height: 1;
+    padding: 0; 
+    width: 200px;
+    transform: translateX(80%); 
+    font-size: 22px;
+  }
+  .category-Right .category-box {
+    width: 350px;
+    height: 400px;
+    position: absolute;
+    right: -130px;
+    top: 100px;
+    gap: 10px;
+    padding: 10px;
+  }
 
-.Right .category-box span{
-    font-family: "Outfit", sans-serif;
-    font-size: 15px;
-    color: #CB927A;
+  .category-box ul {
+    gap: 20px;
+    padding: 0px;
+  }
+  .category-box ul img{
+     position: absolute;
+     right: 40px;
+  }
+  .category-box h3 {
+    font-size: 20px;
+  }
+  .category-box span {
+    font-size: 12px;
+  }
+   .category-box li img {
+    opacity: 1 !important;
+    height: 50px;
+    width: 50px;
+    transform: translateX(0) !important;
+    transform: translateY(-10px) !important;
+  }
 }

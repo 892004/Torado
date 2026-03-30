@@ -10,13 +10,16 @@ const FeaturedProductCard = (props) => {
     <span>{props.label}</span>
   </div>
 )}
+
+<div className="featured-content flex flex-col items-start gap-50">
       <p className="absolute left-2 bottom-20 text-xl text-[#CC9078]">
         {props.rating}
       </p>
       <h3 className="absolute bottom-12 left-2 text-black text-xl font-medium ">
         {props.productName}
       </h3>
-      <p className="absolute left-2 bottom-4 text-[#CC9078]">{props.price}</p>
+      <p1 className="absolute left-2 bottom-4 text-[#CC9078]">{props.price}</p1>
+</div>
     </div>
   );
 };

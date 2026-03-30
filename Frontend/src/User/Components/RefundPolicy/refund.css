@@ -1,0 +1,26 @@
+@media (max-width:768px) {
+  .refund-policy{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+    padding: 20px;
+  }   
+  .refund-policy h3{
+    font-size:18px;
+  }
+
+    .refund-policy .main-content{
+        width: 720px;
+        margin-left: 40px;
+        font-size: 14px;
+    }
+    
+    .refund-policy .address{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 10px;
+    }
+}

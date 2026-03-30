@@ -12,3 +12,63 @@
 .animate-fade{
   animation: fadeIn 0.9s ease;
 }
+
+@media (max-width:768px) {
+  .FeedBack{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    margin: 0px;
+    padding: 10px;
+  }
+  .FeedBack h3{
+    font-size: 26px;
+  }
+
+  .FeedBack .feedback-section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+    width: 100%;
+    padding: 0px;
+    position: relative;
+
+  }
+  .feedback-left{
+    height: 60vh;
+    width: 100%;
+    position: relative;
+
+  }
+  .feedback-left img{
+    height: 100%;
+    width: 100%;
+  }
+  .feeback-right .feddback-card{
+    position: absolute;
+    right: 0;
+    width: 400px;
+    height:350px;
+  }
+  .feddback-card h1{
+    font-size: 26px;
+  }
+  .feddback-card p{
+    line-height: 1.5;
+    font-size: 16px;
+  }
+  .feeback-right .btn-1{
+    position: absolute;
+    bottom: 0;
+    transform: translateY(50%);
+    left: -200px;
+  }
+  .feeback-right .btn-2{
+    position: absolute;
+    transform: translateY(50%);
+    bottom: 0;
+    right: 50px;
+  }
+}

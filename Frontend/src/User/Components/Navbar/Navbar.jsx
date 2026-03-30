@@ -176,7 +176,7 @@ const Navbar = () => {
 
                 <div className="shop-dropdown h-90 w-[98%] shadow-2xl bg-white absolute left-2 rounded-xl top-20 flex items-center justify-around invisible">
                   <div className="links-1 flex flex-col gap-7 list-none text-gray-600 font-medium cursor-pointer">
-                    <li>Shop default</li>
+                    <Link to ='/categories'>Shop default</Link>
                     <li>Shop Left Sidebar</li>
                     <li>Shop Right Sidebar</li>
                     <li>Shop Banner</li>
@@ -243,7 +243,7 @@ const Navbar = () => {
 
                 <div className="blog-dropdown absolute h-105 w-55 flex items-center justify-center bg-white shadow-2xl rounded-xl">
                   <div className="links-1 flex flex-col gap-7 list-none text-gray-600 font-medium cursor-pointer">
-                    <li>Standard</li>
+                    <Link to="Blog">Standard</Link>
                     <li>Blog Grid</li>
                     <li>Blog Grid Mix</li>
                     <li>Right Sidebar</li>
@@ -346,7 +346,7 @@ const Navbar = () => {
                   }`}
                 >
                   <div className="w-[290px] bg-white  flex flex-col items-start gap-2 text-sm max-h-[250px] overflow-y-auto">
-                    <span>Shop Default</span>
+                    <Link to ='/categories'>Shop Default</Link>
                     <span>Shop Left Sidebar</span>
                     <span>Shop Right Sidebar</span>
                     <span>Shop Banner</span>
@@ -436,7 +436,7 @@ const Navbar = () => {
                   }`}
                 >
                   <div className="w-[290px] bg-white  flex flex-col items-start gap-2 text-sm max-h-[250px] overflow-y-auto">
-                    <li>Standard</li>
+                    <Link to ='/Blog'>Standard</Link>
                     <li>Blog Grid</li>
                     <li>Blog Grid Mix</li>
                     <li>Right Sidebar</li>

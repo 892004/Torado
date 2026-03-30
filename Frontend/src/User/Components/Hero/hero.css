@@ -46,39 +46,72 @@
 
 
 
-
-@media (max-width: 768px) {
-
-
-  .Hero .left-side,
-  .Hero .right-side {
-    width: 100% !important;
+@media (max-width:768px) {
+  .Hero{
+    height: auto;
+    min-height: 100vh;
+    width: 100%;
     position: relative;
   }
-
-  .Hero .right-side img {
-    height: auto !important;
-    max-width: 100%;
+  .Hero .navigate-button{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    padding: 10px;
+    left: 20px;
+    transform: translateY(130%);
+  }
+  .Hero .navigate-button button{
+   width: 60px;
+   height: 60px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+  }
+  .Hero img{
+    height: 100vh;
+    width: 100%;
+  }
+  
+  .Hero .hero-section{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+  
+  }
+  .Hero .hero-section .left-side {
+    height: auto;
+    width: 100%;
+  }
+  .Hero .hero-section .left-side .content{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0;
+    line-height: 0.5;
+  }
+  .Hero .hero-section .left-side .content h1{
+    font-size: 26px;
+  }
+  .Hero .hero-section .left-side .content h3{
+    margin-top: 380px;
   }
 
-  .Hero .left-side .content {
-    top: 20% !important;
-    padding: 0 15px;
+  .Hero .hero-section .right-side{
+    height: auto;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    margin-top: 400px;
   }
-
-  .Hero .left-side h1 {
-    font-size: 32px !important;
-    line-height: 1.3;
-  }
-
-  .Hero .left-side p {
-    font-size: 14px !important;
-  }
-
-  .Hero .navigate-button {
-    right: 10px !important;
-    top: auto !important;
-    bottom: 20px;
-    margin: 0 !important;
+  .Hero .hero-section .right-side img{
+    height: 400px;
+    width: 300px;
+    position: absolute;
+    bottom: 0;
   }
 }

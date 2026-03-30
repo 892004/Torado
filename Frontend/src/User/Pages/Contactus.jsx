@@ -12,7 +12,7 @@ const Contactus = () => {
         <Link to = '/' className='opacity-80'> Home  /</Link><span className='text-[#CC9078]'>Contact Us</span>
         </div>
 
-        <div className="h-full w-full flex flex-row items-center justify-center p-10">
+        <div className="content h-full w-full flex flex-row items-center justify-center p-10">
             <Left />
             <Right />
         </div>

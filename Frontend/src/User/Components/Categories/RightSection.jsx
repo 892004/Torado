@@ -20,8 +20,8 @@ const RightSection = () => {
   
 
   return (
-    <section className="Right h-auto flex-1 flex flex-col items-center relative">
-      <h3 className="text-5xl py-20">Shop By Category</h3>
+    <section className="category-Right h-auto flex-1 flex flex-col items-center relative">
+      <h3 className="heading text-5xl py-20">Shop By Category</h3>
 
       <div className="category-box w-180 h-120 bg-[#FFFCF9] absolute right-20 top-40 flex items-center">
         <ul className="flex flex-col gap-10 px-20 p-20 w-full">
@@ -30,7 +30,7 @@ const RightSection = () => {
               key={index}
               className="group relative flex justify-between w-full cursor-pointer"
             >
-              {item.name} <span>{item.count}</span>
+              <h3>{item.name} </h3><span>{item.count}</span>
               {/* 👇 Image SAME line ma show thase */}
               <img
                 src={item.img}

@@ -57,7 +57,7 @@ const FeaturedCard = [
 const FeaturedProducts = () => {
   const [swiperRef, setSwiperRef] = useState(null);
   return (
-    <section className="featured-products h-screen w-full flex flex-col items-center justify-start p-10 relative mt-10 gap-2">
+    <section className="featured-products w-full flex flex-col items-center justify-start p-10 relative mt-10 gap-2">
       <h3 className="text-6xl">Featured Products</h3>
       <Swiper
         slidesPerView={4}
@@ -69,10 +69,21 @@ const FeaturedProducts = () => {
         grabCursor={true}
         simulateTouch={true} // 👈 desktop drag enable
         allowTouchMove={true}
-        className="w-[90%] p-10"
+         breakpoints={{
+    0: {
+      slidesPerView: 1, // mobile
+    },
+    768: {
+      slidesPerView: 2, // tablet
+    },
+    1024: {
+      slidesPerView: 4, // desktop
+    },
+  }}
+        className="w-[90%] p-10 "
       >
         {FeaturedCard.map((elem) => (
-          <SwiperSlide key={elem.id}>
+          <SwiperSlide key={elem.id} className="flex justify-center">
             <FeaturedProductCard
               img={elem.img}
               rating={elem.ratings}
@@ -84,7 +95,7 @@ const FeaturedProducts = () => {
         ))}
       </Swiper>
 
-      <div className="navigate-button flex flex-row absolute z-50 top-70  items-center justify-between gap-312 ">
+      <div className="navigate-button flex flex-row absolute z-50 top-70  items-center justify-between gap-312  ">
         <button
           onClick={() => swiperRef?.slidePrev()}
           className="border bg-white border-[#CB927A] rounded-full px-4 py-4  cursor-pointer text-[#CB927A]"

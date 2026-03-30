@@ -9,6 +9,7 @@ import FeedBack from '../Components/Feedback/FeedBack'
 import FeaturedProducts from '../Components/FeaturedProducts/FeaturedProducts'
 import Instagram from '../Components/Instagram/Instagram'
 
+
 const HomePage = () => {
   return (
     <div>

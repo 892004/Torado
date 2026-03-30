@@ -65,7 +65,7 @@ const Instagram = () => {
       >
         {InstaPhotoes.map((img, index) => (
           <SwiperSlide>
-            <div className="h-100 flex items-center justify-center text-white text-3xl cursor-pointer">
+            <div className="h-120 flex items-center justify-center text-white text-3xl cursor-pointer">
               <img
                 src={img}
                 alt={`slide-${index}`}

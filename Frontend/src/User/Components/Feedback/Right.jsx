@@ -22,7 +22,7 @@ const Right = ({ feedbacks }) => {
   const item = feedbacks[index]
 
   return (
-    <section className="right h-full w-1/2 flex items-center justify-center relative">
+    <section className="feeback-right h-full w-1/2 flex items-center justify-center relative">
 
       {/* MAIN CARD */}
       <div  key={index} className="feddback-card w-220 h-120 absolute right-40 flex flex-col items-center text-center p-8 shadow-xl bg-[#FFFCF9]  transition-all duration-2000 ease-in-out animate-fade">
@@ -47,7 +47,7 @@ const Right = ({ feedbacks }) => {
       {/* LEFT BUTTON */}
       <button
         onClick={prevHandler}
-        className="absolute -left-82 w-14 h-14 rounded-full bg-gradient-to-r from-[#CC9078] to-[#B87860] text-white shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 flex items-center justify-center border-2 border-white"
+        className="btn-1 absolute -left-82 w-14 h-14 rounded-full bg-gradient-to-r from-[#CC9078] to-[#B87860] text-white shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 flex items-center justify-center border-2 border-white"
       >
         <GoArrowLeft className="text-xl font-bold" />
       </button>
@@ -55,7 +55,7 @@ const Right = ({ feedbacks }) => {
       {/* RIGHT BUTTON */}
       <button
         onClick={nextHandler}
-        className="absolute right-35 w-14 h-14 rounded-full bg-gradient-to-r from-[#CC9078] to-[#B87860] text-white shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 flex items-center justify-center border-2 border-white"
+        className="btn-2 absolute right-35 w-14 h-14 rounded-full bg-gradient-to-r from-[#CC9078] to-[#B87860] text-white shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 flex items-center justify-center border-2 border-white"
       >
         <GoArrowRight className="text-xl font-bold" />
       </button>

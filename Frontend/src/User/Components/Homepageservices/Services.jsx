@@ -3,6 +3,7 @@ import FreeShipping from '../../../../src/assets/Images/Logo/free-delivery.svg'
 import Support from '../../../../src/assets/Images/Logo/support.svg'
 import Payment from '../../../../src/assets/Images/Logo/payment-method.svg'
 import Return from '../../../../src/assets/Images/Logo/return-box.svg'
+import '../Homepageservices/services.css'
 
 const Services = () => {
   return (

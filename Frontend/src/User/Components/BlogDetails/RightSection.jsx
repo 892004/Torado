@@ -5,7 +5,7 @@ import { BlogData } from '../../../data/Blog';
 
 const RightSection = () => {
   return (
-    <section className="Right-section h-full w-[30%]  p-5">
+    <section className="Right-section w-[30%]  p-5">
         <h3 className='text-xl mx-1'>Search</h3>
         <div className="flex flex-row relative">
         <input type="text" className=' bg-gray-100 w-full py-4 px-3 mt-1' placeholder='Search here....'  /> 
